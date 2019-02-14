@@ -1,0 +1,22 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/vendors.css": "/css/vendors.css",
+    "/css/app.css": "/css/app.css",
+    "/css/pages/chat.css": "/css/pages/chat.css",
+    "/css/pages/auth.css": "/css/pages/auth.css",
+    "/css/pages/profile.css": "/css/pages/profile.css",
+    "/css/pages/error.css": "/css/pages/error.css",
+    "/css/core/menu/menu-types/horizontal-menu.css": "/css/core/menu/menu-types/horizontal-menu.css",
+    "/css/core/menu/menu-types/vertical-compact-menu.css": "/css/core/menu/menu-types/vertical-compact-menu.css",
+    "/css/core/menu/menu-types/vertical-content-menu.css": "/css/core/menu/menu-types/vertical-content-menu.css",
+    "/css/core/menu/menu-types/vertical-overlay-menu.css": "/css/core/menu/menu-types/vertical-overlay-menu.css",
+    "/css/core/menu/menu-types/vertical-menu-modern.css": "/css/core/menu/menu-types/vertical-menu-modern.css",
+    "/css/core/menu/menu-types/vertical-menu.css": "/css/core/menu/menu-types/vertical-menu.css",
+    "/css/core/colors/palette-loader.css": "/css/core/colors/palette-loader.css",
+    "/css/core/colors/palette-switch.css": "/css/core/colors/palette-switch.css",
+    "/css/core/colors/palette-climacon.css": "/css/core/colors/palette-climacon.css",
+    "/css/core/colors/palette-gradient.css": "/css/core/colors/palette-gradient.css",
+    "/css/core/colors/palette-callout.css": "/css/core/colors/palette-callout.css",
+    "/css/core/colors/palette-tooltip.css": "/css/core/colors/palette-tooltip.css",
+    "/css/core/colors/palette-noui.css": "/css/core/colors/palette-noui.css"
+}

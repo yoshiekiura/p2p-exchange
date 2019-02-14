@@ -1,0 +1,46 @@
+
+.form-simple input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-simple input[type="mail"] {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-simple input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.help-block{
+    ul{
+        margin:0  !important;
+        padding: 0 !important;
+        li{
+            list-style:none;
+        }
+    }
+}
+
+@media screen and (max-width: 991px){
+    .login-container{
+        margin: 20px 0;
+    }
+}
+
+
+@media screen and (min-width: 992px){
+    .login-container > div{
+        height: 100vh;
+        margin: 2px 0;
+    }
+}
+
+.g-recaptcha{
+    display: inline-block;
+}

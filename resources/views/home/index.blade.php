@@ -66,7 +66,7 @@
                     <div class="col-xl-4 col-lg-6 col-12">
                         <div class="card crypto-card-3 bg-primary">
                             <div class="card-content">
-                                <div class="card-body cc DASH pb-1">
+                                <!-- <div class="card-body cc DASH pb-1">
                                     <div class="row">
                                         <div class="col-6">
                                             <h4 class="text-white mb-3">
@@ -98,7 +98,7 @@
                                             </h4>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

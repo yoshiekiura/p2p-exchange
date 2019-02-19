@@ -25,10 +25,10 @@
                                     @include('wallet.partials.tabs.bitcoin')
                                 </div>
 
-                                <div role="tabpanel" class="tab-pane fade" id="dash"
+                                <!-- <div role="tabpanel" class="tab-pane fade" id="dash"
                                      aria-labelledby="dash-tab" aria-expanded="true">
                                     @include('wallet.partials.tabs.dash')
-                                </div>
+                                </div> -->
 
                                 <div role="tabpanel" class="tab-pane fade" id="litecoin"
                                      aria-labelledby="litecoin-tab" aria-expanded="true">
@@ -61,12 +61,12 @@
                                             </a>
                                         </li>
 
-                                        <li class="nav-item">
+                                        <!-- <li class="nav-item">
                                             <a class="nav-link" id="dash-tab" data-toggle="pill"
                                                href="#dash" role="tab" aria-controls="dash" aria-expanded="true">
                                                 <i class="cc DASH-alt"></i> Dash
                                             </a>
-                                        </li>
+                                        </li> -->
 
                                         <li class="nav-item">
                                             <a class="nav-link" id="litecoin-tab" data-toggle="pill"
@@ -133,47 +133,47 @@
             },
 
             // Dash
-            {
-                'selector': '#dash-address-list',
-                'options': {
-                    "ajax": {
-                        "async": true,
-                        "url": '{{route('wallet.address-data', ['coin' => 'dash'])}}',
-                        "type": "POST",
-                    },
+            // {
+            //     'selector': '#dash-address-list',
+            //     'options': {
+            //         "ajax": {
+            //             "async": true,
+            //             "url": '{{route('wallet.address-data', ['coin' => 'dash'])}}',
+            //             "type": "POST",
+            //         },
 
-                    columns: [
-                        {data: null, defaultContent: ''},
-                        {data: 'address', orderable: false},
-                        {data: 'created_at', searchable: false}
-                    ],
+            //         columns: [
+            //             {data: null, defaultContent: ''},
+            //             {data: 'address', orderable: false},
+            //             {data: 'created_at', searchable: false}
+            //         ],
 
-                    "order": [
-                        [2, 'desc']
-                    ],
-                }
-            },
+            //         "order": [
+            //             [2, 'desc']
+            //         ],
+            //     }
+            // },
 
-            {
-                'selector': '#dash-transaction-list',
-                'options': {
-                    "ajax": {
-                        "async": true,
-                        "url": '{{route('wallet.transaction-data', ['coin' => 'dash'])}}',
-                        "type": "POST",
-                    },
+            // {
+            //     'selector': '#dash-transaction-list',
+            //     'options': {
+            //         "ajax": {
+            //             "async": true,
+            //             "url": '{{route('wallet.transaction-data', ['coin' => 'dash'])}}',
+            //             "type": "POST",
+            //         },
 
-                    ordering: false,
+            //         ordering: false,
 
-                    columns: [
-                        {data: null, defaultContent: ''},
-                        {data: 'type'},
-                        {data: 'value'},
-                        {data: 'date', orderable: false},
-                        {data: 'confirmations'},
-                    ]
-                }
-            },
+            //         columns: [
+            //             {data: null, defaultContent: ''},
+            //             {data: 'type'},
+            //             {data: 'value'},
+            //             {data: 'date', orderable: false},
+            //             {data: 'confirmations'},
+            //         ]
+            //     }
+            // },
 
             // Litecoin
             {

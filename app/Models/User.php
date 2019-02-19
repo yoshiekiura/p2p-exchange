@@ -513,36 +513,36 @@ class User extends Authenticatable implements CanVerifyEmailContract
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function dash_addresses()
-    {
-        return $this->hasManyThrough(
-            'App\Models\DashAddress',
-            'App\Models\DashWallet',
-            'user_id', 'wallet_id',
-            'id', 'id'
-        );
-    }
+    // public function dash_addresses()
+    // {
+    //     return $this->hasManyThrough(
+    //         'App\Models\DashAddress',
+    //         'App\Models\DashWallet',
+    //         'user_id', 'wallet_id',
+    //         'id', 'id'
+    //     );
+    // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function dash_wallet()
-    {
-        return $this->hasOne('App\Models\DashWallet', 'user_id', 'id');
-    }
+    // public function dash_wallet()
+    // {
+    //     return $this->hasOne('App\Models\DashWallet', 'user_id', 'id');
+    // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function dash_transactions()
-    {
-        return $this->hasManyThrough(
-            'App\Models\DashTransaction',
-            'App\Models\DashWallet',
-            'user_id', 'wallet_id',
-            'id', 'id'
-        );
-    }
+    // public function dash_transactions()
+    // {
+    //     return $this->hasManyThrough(
+    //         'App\Models\DashTransaction',
+    //         'App\Models\DashWallet',
+    //         'user_id', 'wallet_id',
+    //         'id', 'id'
+    //     );
+    // }
 
     /**
      * Show all trades initiated by user

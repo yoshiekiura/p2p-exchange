@@ -26,12 +26,12 @@ return [
         'dust_threshold' => 0.00003,
     ],
 
-    'dash' => [
-        'trade_fee' => env('SET_DASH_TRADE_FEE', 1),
-        'profit_per_wallet_limit' => env('SET_DASH_PROFIT_PER_WALLET_LIMIT', 100000000),
-        'locked_balance' => env('SET_DASH_LOCKED_BALANCE'),
-        'dust_threshold' => 0.00003,
-    ],
+    // 'dash' => [
+    //     'trade_fee' => env('SET_DASH_TRADE_FEE', 1),
+    //     'profit_per_wallet_limit' => env('SET_DASH_PROFIT_PER_WALLET_LIMIT', 100000000),
+    //     'locked_balance' => env('SET_DASH_LOCKED_BALANCE'),
+    //     'dust_threshold' => 0.00003,
+    // ],
 
     /*
     |--------------------------------------------------------------------------

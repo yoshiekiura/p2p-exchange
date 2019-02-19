@@ -588,7 +588,6 @@ class User extends Authenticatable implements CanVerifyEmailContract
 
                 return $data;
             });
-            print_r($wallets[strtolower($coin)]);
         return $wallets[strtolower($coin)];
     }
 }

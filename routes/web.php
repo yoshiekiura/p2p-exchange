@@ -87,7 +87,7 @@ Route::group([], function () {
                 Route::post('btc', 'BitGo\WebhookController@handleBitcoin')->name('btc');
 
                 // Dash
-                Route::post('dash', 'BitGo\WebhookController@handleDash')->name('dash');
+                //Route::post('dash', 'BitGo\WebhookController@handleDash')->name('dash');
 
                 // Litecoin
                 Route::post('ltc', 'BitGo\WebhookController@handleLitecoin')->name('ltc');

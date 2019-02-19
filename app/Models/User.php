@@ -288,9 +288,9 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->bitcoin_addresses();
                 break;
 
-            case 'dash':
-                $model = $this->dash_addresses();
-                break;
+            //case 'dash':
+              //  $model = $this->dash_addresses();
+                //break;
 
             case 'ltc':
             case 'litecoin':
@@ -317,9 +317,9 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->bitcoin_wallet();
                 break;
 
-            case 'dash':
-                $model = $this->dash_wallet();
-                break;
+            // case 'dash':
+            //     $model = $this->dash_wallet();
+            //     break;
 
             case 'ltc':
             case 'litecoin':
@@ -348,9 +348,9 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->bitcoin_transactions();
                 break;
 
-            case 'dash':
-                $model = $this->dash_transactions();
-                break;
+            // case 'dash':
+            //     $model = $this->dash_transactions();
+            //     break;
 
             case 'ltc':
             case 'litecoin':

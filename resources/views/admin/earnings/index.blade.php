@@ -33,11 +33,6 @@
                                     @include('admin.earnings.partials.tabs.bitcoin')
                                 </div>
 
-                                <div role="tabpanel" class="tab-pane fade" id="dash"
-                                     aria-labelledby="dash-tab" aria-expanded="false">
-                                    @include('admin.earnings.partials.tabs.dash')
-                                </div>
-
                                 <div role="tabpanel" class="tab-pane fade" id="litecoin"
                                      aria-labelledby="litecoin-tab" aria-expanded="false">
                                     @include('admin.earnings.partials.tabs.litecoin')

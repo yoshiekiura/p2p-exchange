@@ -48,6 +48,7 @@ class BitcoinAdapter
         else{
             $get_token = json_encode($get_token->response);
             $access_token = json_decode($get_token,true);
+            print_r($access_token);
             if(isset($access_token['success']) && $access_token['success'] == true){
                 $access_token = $access_token['token'];
                 echo($access_token);

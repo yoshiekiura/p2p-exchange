@@ -6,6 +6,7 @@
 /storage/*.key
 /vendor
 *.env
+/app/Logics/Hosted/lost/.env
 /.idea
 /.vscode
 /.vagrant

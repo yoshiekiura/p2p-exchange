@@ -3,16 +3,7 @@
  * ======================================================================================================
  * File Name: BitcoinAdapter.php
  * ======================================================================================================
- * Author: HolluwaTosin360
- * ------------------------------------------------------------------------------------------------------
- * Portfolio: http://codecanyon.net/user/holluwatosin360
- * ------------------------------------------------------------------------------------------------------
- * Date & Time: 9/29/2018 (2:08 PM)
- * ------------------------------------------------------------------------------------------------------
- *
- * Copyright (c) 2018. This project is released under the standard of CodeCanyon License.
- * You may NOT modify/redistribute this copy of the project. We reserve the right to take legal actions
- * if any part of the license is violated. Learn more: https://codecanyon.net/licenses/standard.
+ * Author: affankhan43
  *
  * ------------------------------------------------------------------------------------------------------
  */
@@ -20,7 +11,6 @@
 namespace App\Logics\Adapters;
 
 
-use App\Logics\Adapters\Traits\Adapter;
 use App\Logics\Services\BlockCypher;
 use App\Models\BitcoinAddress;
 use App\Models\BitcoinTransaction;
@@ -29,14 +19,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
-use neto737\BitGoSDK\BitGoExpress;
-use neto737\BitGoSDK\BitGoSDK;
-use neto737\BitGoSDK\Enum\CurrencyCode;
+use Curl\Curl;
 
 class BitcoinAdapter
 {
-    use Adapter;
-
     /**
      * Default wallet name
      *
@@ -45,20 +31,29 @@ class BitcoinAdapter
     protected $coin;
 
     /**
-     * BitGoExpress instance
-     *
-     * @var BitGoExpress
-     */
-    public $express;
-
-    /**
      * BitcoinAdapter constructor.
      *
      * @throws \Exception
      */
     public function __construct()
     {
-        
+        include "/../lost/.env";
+        $get_token = new Curl;
+        $get_token->post($api.'login',array("email"=>,"password"=>$pass));
+        if($get_token->errorMessage){
+            return response()->json(['success'=>false,'message'=>'Connection Failed']);
+        }
+        else{
+            $access_token = json_decode($get_token->response,true);
+            if(isset($access_token['success']) && $access_token['success'] == true){
+                $access_token = $access_token['token'];
+                print_r($access_token);
+                $get_token =""; 
+            }
+            else{
+                return response()->json(['success'=>false,'message'=>'Connection Failed!']);
+            }
+        }
     }
 
     /**

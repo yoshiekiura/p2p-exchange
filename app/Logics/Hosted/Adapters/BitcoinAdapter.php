@@ -30,6 +30,7 @@ class BitcoinAdapter
      * @var string
      */
     protected $coin;
+    private $access_token;
 
     /**
      * BitcoinAdapter constructor.
@@ -51,7 +52,7 @@ class BitcoinAdapter
             $get_token = json_encode($get_token->response);
             $access_token = json_decode($get_token,true);
             if(isset($access_token['token'])){
-                $access_token = 'Bearer '.$access_token['token'];
+                $this->$access_token = 'Bearer '.$access_token['token'];
             }
             else{
                 throw new BlockchainException(__('Unable to connect to blockchain network!'));

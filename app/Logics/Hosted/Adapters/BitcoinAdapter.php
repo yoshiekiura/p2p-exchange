@@ -37,6 +37,7 @@ class BitcoinAdapter
      * @var string
      */
     private $accesstoken;
+    private $api_url;
 
     /**
      * BitcoinAdapter constructor.
@@ -46,7 +47,7 @@ class BitcoinAdapter
     public function __construct()
     {
         include __DIR__.'/../lost/.env';
-        $api_url = $api;
+        $this->api_url = $api;
         $get_token = new Curl;
         $get_token->setHeader('Accept','application/json');
         $get_token->setHeader('Content-Type','application/json');
@@ -69,7 +70,7 @@ class BitcoinAdapter
         //$approvals = (int) config()->get('settings.min_tx_confirmations');
         $generate_wallet = new Curl();
         $generate_wallet->setHeader("Authorization",$this->accesstoken);
-        $generate_wallet->post($api_url.'affan',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
+        $generate_wallet->post($this->api_url.'affan',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
         if($generate_wallet->errorMessage){
             throw new BlockchainException(__('Unable to generate wallet'));
         }

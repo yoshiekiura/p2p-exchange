@@ -90,7 +90,7 @@ class WalletController extends Controller
 
         $adapter = getBlockchainAdapter($coin);
 
-        $data = $adapter->generateWallet($label, $passphrase);
+        $data = $adapter->generateWallet($label, $passphrase,$user->id,$user->name);
 
         $wallet = $user->getCoinWallet($coin)->create([
             'wallet_id' => $data['id'],

@@ -62,19 +62,23 @@ class BitcoinAdapter
         }
     }
 
-    public function generateWallet($label, $passphrase)
+    public function generateWallet($label, $passphrase, $userid, $username)
     {
         //$approvals = (int) config()->get('settings.min_tx_confirmations');
         $generate_wallet = new Curl();
         $generate_wallet->setHeader("Authorization",$access_token);
-        $generate_wallet->post($api_url.'affan',array('type'=>1,'coin'=>'BTC','userid'=>,'username' =>,'passphrase'=>));
-        $wallet = $this->express->generateWallet(
-            $label, $passphrase
-        );
-
-        
-
-        return $wallet;
+        $generate_wallet->post($api_url.'affan',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
+        if($generate_wallet->errorMessage){
+            throw new BlockchainException(__('Unable to generate wallet'));
+        }
+        else{
+            $generate_wallet = json_encode($generate_wallet->response);
+            $generate_wallet = json_decode($generate_wallet,true);
+            if(isset($generate_wallet['success']) && $generate_wallet['success']==true){
+                throw new BlockchainException(__(json_encode($generate_wallet)));
+            }
+        }
+        //return $wallet;
     }
 
     /**

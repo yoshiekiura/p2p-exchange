@@ -270,11 +270,11 @@ class Trade extends Model
             'amount'  => (int) coin($value, $this->coin, true)->getAmount()
         ];
 
-        $installer = resolve('installer');
+        //$installer = resolve('installer');
 
-        $details = $installer->purchaseDetails();
+        //$details = $installer->purchaseDetails();
 
-        if ($this->shouldDeductFee() && !$details->isRegularLicense()) {
+        if ($this->shouldDeductFee()) {
             $fee = $this->calcFee();
 
             $wallet = $this->prepareEscrowWallet();

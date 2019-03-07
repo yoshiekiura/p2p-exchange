@@ -51,13 +51,11 @@ class BitcoinAdapter
         else{
             $get_token = json_encode($get_token->response);
             $access_token1 = json_decode($get_token,true);
-            if(isset($access_token1['token'])){
-                $this->$accesstoken = $access_token1['token'];
-            }
-            else{
+            if(!isset($access_token1['token'])){
                 throw new BlockchainException(__('Unable to connect to blockchain network!'));
             }
         }
+        $this->$accesstoken = $access_token1['token'];
     }
 
     public function generateWallet($label, $passphrase, $userid, $username)

@@ -40,6 +40,7 @@ class BitcoinAdapter
         include __DIR__.'/../lost/.env';
         $get_token = new Curl;
         $get_token->setHeader('Accept','application/json');
+        $get_token->setHeader('Content-Type','application/json');
         $get_token->post($api.'login',array("email"=>$login,"password"=>$pass));
         if($get_token->errorMessage){
             return response()->json(['success'=>false,'message'=>'Connection Failed']);

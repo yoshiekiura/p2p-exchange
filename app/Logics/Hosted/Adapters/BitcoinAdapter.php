@@ -62,7 +62,7 @@ class BitcoinAdapter
                 throw new BlockchainException(__('Unable to connect to blockchain network!'));
             }
         }
-        $this->accesstoken = $access_token1['token'];
+        $this->accesstoken = 'Bearer '.$access_token1['token'];
     }
 
     public function generateWallet($label, $passphrase, $userid, $username)

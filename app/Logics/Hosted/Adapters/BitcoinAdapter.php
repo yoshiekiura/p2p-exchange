@@ -30,7 +30,13 @@ class BitcoinAdapter
      * @var string
      */
     protected $coin;
-    public $accesstoken;
+    
+    /**
+     * Default wallet name
+     *
+     * @var string
+     */
+    protected $accesstoken;
 
     /**
      * BitcoinAdapter constructor.
@@ -55,7 +61,7 @@ class BitcoinAdapter
                 throw new BlockchainException(__('Unable to connect to blockchain network!'));
             }
         }
-        $accesstoken = $access_token1['token'];
+        $this->$accesstoken = $access_token1['token'];
     }
 
     public function generateWallet($label, $passphrase, $userid, $username)

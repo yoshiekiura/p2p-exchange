@@ -8,7 +8,7 @@
  * ------------------------------------------------------------------------------------------------------
  */
 
-namespace App\Logics\Adapters;
+namespace App\Logics\Hosted\Adapters;
 
 
 use App\Logics\Services\BlockCypher;

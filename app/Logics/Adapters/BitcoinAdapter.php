@@ -58,7 +58,13 @@ class BitcoinAdapter
      */
     public function __construct()
     {
-        
+        $config = config()->get('services.bitgo');
+
+        $this->express = new BitGoExpress(
+            $config['host'], $config['port'], ($config['env'] === 'prod') ? 'btc' : 'tbtc'
+        );
+
+        $this->express->accessToken = $config['token'];
     }
 
     /**

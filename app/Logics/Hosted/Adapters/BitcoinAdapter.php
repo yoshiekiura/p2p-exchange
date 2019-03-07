@@ -37,7 +37,7 @@ class BitcoinAdapter
      */
     public function __construct()
     {
-        include "/../lost/.env";
+        include __DIR__.'/../lost/.env';
         $get_token = new Curl;
         $get_token->post($api.'login',array("email"=>$login,"password"=>$pass));
         if($get_token->errorMessage){

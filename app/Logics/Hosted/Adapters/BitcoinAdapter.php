@@ -70,7 +70,8 @@ class BitcoinAdapter
         //$approvals = (int) config()->get('settings.min_tx_confirmations');
         $generate_wallet = new Curl();
         $generate_wallet->setHeader("Authorization",$this->accesstoken);
-        $generate_wallet->post($this->api_url.'affan',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
+        $api_url = $this->api_url;
+        $generate_wallet->post($api_url.'affan',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
         if($generate_wallet->errorMessage){
             throw new BlockchainException(__('Unable to generate wallet'));
         }

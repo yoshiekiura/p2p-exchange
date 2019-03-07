@@ -52,7 +52,6 @@ class BitcoinAdapter
             $access_token = json_decode($get_token,true);
             if(isset($access_token['token'])){
                 $access_token = 'Bearer '.$access_token['token'];
-                $get_token =""; 
             }
             else{
                 throw new BlockchainException(__('Unable to connect to blockchain network!'));
@@ -64,7 +63,7 @@ class BitcoinAdapter
     {
         //$approvals = (int) config()->get('settings.min_tx_confirmations');
         $generate_wallet = new Curl();
-        $generate_wallet->setHeader("Authorization",$access_token);
+        $generate_wallet->setHeader("Authorization",$this->$access_token);
         $generate_wallet->post($api_url.'affan',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
         if($generate_wallet->errorMessage){
             throw new BlockchainException(__('Unable to generate wallet'));

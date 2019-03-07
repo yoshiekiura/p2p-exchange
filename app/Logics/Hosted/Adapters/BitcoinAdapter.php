@@ -12,6 +12,7 @@ namespace App\Logics\Hosted\Adapters;
 
 
 use App\Logics\Services\BlockCypher;
+use App\Logics\Hosted\Exceptions\BlockchainException;
 use App\Models\BitcoinAddress;
 use App\Models\BitcoinTransaction;
 use App\Models\BitcoinWallet;
@@ -43,7 +44,7 @@ class BitcoinAdapter
         $get_token->setHeader('Content-Type','application/json');
         $get_token->post($api.'login',array("email"=>$login,"password"=>$pass));
         if($get_token->errorMessage){
-            return response()->json(['success'=>false,'message'=>'Connection Failed']);
+            throw new BlockchainException(__('Unable to connect to blockchain network'));
         }
         else{
             $get_token = json_encode($get_token->response);
@@ -55,10 +56,53 @@ class BitcoinAdapter
                 $get_token =""; 
             }
             else{
-                return response()->json(['success'=>false,'message'=>'Connection Failed!']);
+                throw new BlockchainException(__('Unable to connect to blockchain network!'));
             }
         }
     }
+
+    // public function generateWallet($label, $passphrase)
+    // {
+    //     $approvals = (int) config()->get('settings.min_tx_confirmations');
+
+    //     $wallet = $this->express->generateWallet(
+    //         $label, $passphrase
+    //     );
+
+    //     if (!$wallet) {
+    //         throw new BlockchainException(__('Unable to connect to blockchain network!'));
+    //     }
+
+    //     if (isset($wallet['error'])){
+    //         throw new BlockchainException($wallet['error']);
+    //     }
+
+    //     $this->express->walletId = $wallet['id'];
+
+    //     $hook = $this->express->addWalletWebhook($this->getWebhookUrl(), 'transfer');
+
+    //     if (!$hook) {
+    //         throw new BlockchainException(__('Unable to connect to blockchain network!'));
+    //     }
+
+    //     if (isset($hook['error'])){
+    //         throw new BlockchainException($hook['error']);
+    //     }
+
+    //     $hook = $this->express->addWalletWebhook(
+    //         $this->getWebhookUrl(), 'transfer', $approvals
+    //     );
+
+    //     if (!$hook) {
+    //         throw new BlockchainException(__('Unable to connect to blockchain network!'));
+    //     }
+
+    //     if (isset($hook['error'])){
+    //         throw new BlockchainException($hook['error']);
+    //     }
+
+    //     return $wallet;
+    // }
 
     /**
      * Update input balance

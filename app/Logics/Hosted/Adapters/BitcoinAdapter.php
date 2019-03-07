@@ -83,7 +83,7 @@ class BitcoinAdapter
                 return $wallet;
             }
             else{
-                throw new BlockchainException(__('Unable to generate wallet!'));
+                throw new BlockchainException(__(json_encode($generate_wallet)));
             }
         }
     }

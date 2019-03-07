@@ -89,7 +89,7 @@ class WalletController extends Controller
         $passphrase = str_random(10);
 
         $adapter = getBlockchainAdapter($coin);
-        
+
         $data = $adapter->generateWallet($label, $passphrase,$user->id,$user->name);
 
         $wallet = $user->getCoinWallet($coin)->create([
@@ -103,7 +103,7 @@ class WalletController extends Controller
         $address = $data['receiveAddress'];
 
         $wallet->addresses()->create([
-            'address' => $address['address']
+            'address' => $address
         ]);
 
         return $wallet;

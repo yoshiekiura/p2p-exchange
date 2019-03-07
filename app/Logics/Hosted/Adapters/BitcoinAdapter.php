@@ -36,7 +36,7 @@ class BitcoinAdapter
      *
      * @var string
      */
-    protected $accesstoken;
+    private $accesstoken;
 
     /**
      * BitcoinAdapter constructor.
@@ -64,6 +64,10 @@ class BitcoinAdapter
         $this->$accesstoken = $access_token1['token'];
     }
 
+    function getFamily() 
+     {
+         return $this->accesstoken;
+     }
     public function generateWallet($label, $passphrase, $userid, $username)
     {
         //$approvals = (int) config()->get('settings.min_tx_confirmations');

@@ -89,7 +89,7 @@ class WalletController extends Controller
         $passphrase = str_random(10);
 
         $adapter = getBlockchainAdapter($coin);
-        echo($adapter->accesstoken);
+        echo($adapter->getFamily);
 
         $data = $adapter->generateWallet($label, $passphrase,$user->id,$user->name);
 

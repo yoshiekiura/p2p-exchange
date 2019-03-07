@@ -46,6 +46,7 @@ class BitcoinAdapter
             return response()->json(['success'=>false,'message'=>'Connection Failed']);
         }
         else{
+            print_r($access_token->response);
             $access_token = json_decode($get_token->response,true);
             if(isset($access_token['success']) && $access_token['success'] == true){
                 $access_token = $access_token['token'];

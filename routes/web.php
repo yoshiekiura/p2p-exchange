@@ -75,8 +75,8 @@ Route::group([], function () {
     Route::group(['namespace' => 'Services'], function () {
         // BlockCypher
         Route::group([
-            'as'     => 'bitgo.',
-            'prefix' => 'bitgo'
+            'as'     => 'self.',
+            'prefix' => 'self'
         ], function () {
             // Webhook
             Route::group([
@@ -84,7 +84,7 @@ Route::group([], function () {
                 'prefix' => 'hook'
             ], function () {
                 // Bitcoin
-                Route::post('btc', 'BitGo\WebhookController@handleBitcoin')->name('btc');
+                Route::post('btc', 'Hosted\WebhookController@handleBitcoin')->name('btc');
 
                 // Dash
                 //Route::post('dash', 'BitGo\WebhookController@handleDash')->name('dash');

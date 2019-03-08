@@ -110,17 +110,17 @@ class IncomingConfirmed extends Notification
             ->where('name', 'coin_incoming_confirmed')
             ->first();
 
-        if ($settings->sms) {
-            array_push($channels, getSmsChannel());
-        }
+        // if ($settings->sms) {
+        //     array_push($channels, getSmsChannel());
+        // }
 
         if ($settings->database) {
             array_push($channels, 'database');
         }
 
-        if ($settings->email) {
-            array_push($channels, 'mail');
-        }
+        // if ($settings->email) {
+        //     array_push($channels, 'mail');
+        // }
 
         return $channels;
     }

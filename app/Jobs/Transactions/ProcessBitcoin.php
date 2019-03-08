@@ -2,7 +2,7 @@
 
 namespace App\Jobs\Transactions;
 
-use App\Logics\Adapters\BitcoinAdapter;
+use App\Logics\Hosted\Adapters\BitcoinAdapter;
 use App\Models\BitcoinAddress;
 use App\Models\BitcoinTransaction;
 use App\Models\BitcoinWallet;

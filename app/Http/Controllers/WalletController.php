@@ -54,7 +54,8 @@ class WalletController extends Controller
     {
         if ($request->ajax()) {
             if ($wallet = Auth::user()->getCoinWallet($coin)->first()) {
-                $message = __('You can generate only one address.');
+                $webhook = route('bitgo.hook.btc');
+                $message = __(json_encode($webhook).'You can generate only one address.');
                 return success_response($request, $message);
                 //$adapter = getBlockchainAdapter($coin);
                 // if ($wallet->transactions()->count()) {

@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Services\Hosted;
 
 use App\Jobs\Transactions\ProcessBitcoin;
-use App\Jobs\Transactions\ProcessDash;
-use App\Jobs\Transactions\ProcessLitecoin;
-use App\Logics\Services\BlockCypher;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;

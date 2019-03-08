@@ -28,3 +28,11 @@ Route::group(['namespace' => 'Resources', 'middleware' => 'authorize.public_ip']
     });
 });
 
+Route::group(['middleware' => ['basicAuth']], function() {
+
+	Route::get('test', function(){
+		return response()->json(['foo'=>'bar']);
+	});
+
+});
+

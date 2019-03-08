@@ -54,24 +54,19 @@ class WalletController extends Controller
     {
         if ($request->ajax()) {
             if ($wallet = Auth::user()->getCoinWallet($coin)->first()) {
-
-                $adapter = getBlockchainAdapter($coin);
-
-                if ($wallet->transactions()->count()) {
-
-                    $address = $adapter->createWalletAddress($wallet);
-
-                    $wallet->addresses()->create(['address' => $address['address']]);
-
-                    $message = __('A new address has been created successfully!');
-
-                    return success_response($request, $message);
-                }
+                $message = __('You can generate only one address.');
+                return success_response($request, $message);
+                //$adapter = getBlockchainAdapter($coin);
+                // if ($wallet->transactions()->count()) {
+                //     $address = $adapter->createWalletAddress($wallet);
+                //     $wallet->addresses()->create(['address' => $address['address']]);
+                //     $message = __('A new address has been created successfully!');
+                //     return success_response($request, $message);
+                // }
 
             } else {
                 $this->createWallet(Auth::user(), $coin);
             }
-
         } else {
             return abort(403);
         }

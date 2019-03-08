@@ -48,112 +48,113 @@ class ProcessBitcoin implements ShouldQueue
     {
         $this->settings = config('settings');
         $this->data = $data;
+        print_r($data);
     }
 
     /**
      * @param BitcoinAdapter $adapter
      * @throws \Exception
      */
-    public function handle(BitcoinAdapter $adapter)
-    {
-        $adapter->express->walletId = $this->data['wallet'];
+    // public function handle(BitcoinAdapter $adapter)
+    // {
+    //     $adapter->express->walletId = $this->data['wallet'];
 
-        $wallet = BitcoinWallet::where('wallet_id', $this->data['wallet'])->first();
+    //     $wallet = BitcoinWallet::where('wallet_id', $this->data['wallet'])->first();
 
-        if (!$wallet) return;
+    //     if (!$wallet) return;
 
-        $tx = $adapter->express->getWalletTransfer($this->data['hash']);
+    //     $tx = $adapter->express->getWalletTransfer($this->data['hash']);
 
-        if (!$tx) {
-            throw new \Exception(__('Unable to connect to blockchain network!'));
-        }
+    //     if (!$tx) {
+    //         throw new \Exception(__('Unable to connect to blockchain network!'));
+    //     }
 
-        if (isset($tx['error'])) {
-            throw new \Exception($tx['error']);
-        }
+    //     if (isset($tx['error'])) {
+    //         throw new \Exception($tx['error']);
+    //     }
 
-        $confirmations = (int) $tx['confirmations'] ?? 0;
+    //     $confirmations = (int) $tx['confirmations'] ?? 0;
 
-        $transaction = $wallet->transactions()
-            ->where('hash', $this->data['hash'])
-            ->first();
+    //     $transaction = $wallet->transactions()
+    //         ->where('hash', $this->data['hash'])
+    //         ->first();
 
-        if ($tx['type'] == 'send') {
-            if(!$transaction){
-                $transaction = $wallet->transactions()->create([
-                    'type'           => $tx['type'],
-                    'hash'           => $tx['txid'],
-                    'confirmations'  => $confirmations,
-                    'transaction_id' => $tx['id'],
-                    'state'          => $tx['state'],
-                    'date'           => Carbon::parse($tx['date']),
-                    'value'          => $tx['value'],
-                ]);
-            }
+    //     if ($tx['type'] == 'send') {
+    //         if(!$transaction){
+    //             $transaction = $wallet->transactions()->create([
+    //                 'type'           => $tx['type'],
+    //                 'hash'           => $tx['txid'],
+    //                 'confirmations'  => $confirmations,
+    //                 'transaction_id' => $tx['id'],
+    //                 'state'          => $tx['state'],
+    //                 'date'           => Carbon::parse($tx['date']),
+    //                 'value'          => $tx['value'],
+    //             ]);
+    //         }
 
-            if ($confirmations >= 1) {
-                $result = $adapter->express->getWallet();
+    //         if ($confirmations >= 1) {
+    //             $result = $adapter->express->getWallet();
 
-                if (!$result) {
-                    throw new \Exception(__('Unable to connect to blockchain network!'));
-                }
+    //             if (!$result) {
+    //                 throw new \Exception(__('Unable to connect to blockchain network!'));
+    //             }
 
-                if (isset($result['error'])) {
-                    throw new \Exception($result['error']);
-                }
+    //             if (isset($result['error'])) {
+    //                 throw new \Exception($result['error']);
+    //             }
 
-                $wallet->update([
-                    'balance' => $result['confirmedBalance']
-                ]);
-            }
-        }
+    //             $wallet->update([
+    //                 'balance' => $result['confirmedBalance']
+    //             ]);
+    //         }
+    //     }
 
-        if ($tx['type'] == 'receive') {
-            $min_confirmations = (int) $this->settings['min_tx_confirmations'];
+    //     if ($tx['type'] == 'receive') {
+    //         $min_confirmations = (int) $this->settings['min_tx_confirmations'];
 
-            if ($transaction) {
-                if ($confirmations >= $min_confirmations) {
-                    if ($user = $wallet->user) {
-                        $user->notify(new IncomingConfirmed('btc', $tx['value']));
-                    }
+    //         if ($transaction) {
+    //             if ($confirmations >= $min_confirmations) {
+    //                 if ($user = $wallet->user) {
+    //                     $user->notify(new IncomingConfirmed('btc', $tx['value']));
+    //                 }
 
-                    $result = $adapter->express->getWallet();
+    //                 $result = $adapter->express->getWallet();
 
-                    if (!$result) {
-                        throw new \Exception(__('Unable to connect to blockchain network!'));
-                    }
+    //                 if (!$result) {
+    //                     throw new \Exception(__('Unable to connect to blockchain network!'));
+    //                 }
 
-                    if (isset($result['error'])) {
-                        throw new \Exception($result['error']);
-                    }
+    //                 if (isset($result['error'])) {
+    //                     throw new \Exception($result['error']);
+    //                 }
 
-                    $wallet->update(['balance' => $result['confirmedBalance']]);
-                }
-            } else {
-                $transaction = $wallet->transactions()->create([
-                    'type'           => $tx['type'],
-                    'hash'           => $tx['txid'],
-                    'confirmations'  => $confirmations,
-                    'transaction_id' => $tx['id'],
-                    'state'          => $tx['state'],
-                    'date'           => Carbon::parse($tx['date']),
-                    'value'          => $tx['value'],
-                ]);
+    //                 $wallet->update(['balance' => $result['confirmedBalance']]);
+    //             }
+    //         } else {
+    //             $transaction = $wallet->transactions()->create([
+    //                 'type'           => $tx['type'],
+    //                 'hash'           => $tx['txid'],
+    //                 'confirmations'  => $confirmations,
+    //                 'transaction_id' => $tx['id'],
+    //                 'state'          => $tx['state'],
+    //                 'date'           => Carbon::parse($tx['date']),
+    //                 'value'          => $tx['value'],
+    //             ]);
 
-                if ($confirmations < $min_confirmations) {
-                    if ($user = $wallet->user) {
-                        $user->notify(new IncomingUnconfirmed('btc', $tx['value']));
-                    }
-                }
-            }
-        }
+    //             if ($confirmations < $min_confirmations) {
+    //                 if ($user = $wallet->user) {
+    //                     $user->notify(new IncomingUnconfirmed('btc', $tx['value']));
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        if ($transaction) {
-            $transaction->update([
-                'confirmations' => $confirmations,
-                'state'         => $tx['state'],
-            ]);
-        }
-    }
+    //     if ($transaction) {
+    //         $transaction->update([
+    //             'confirmations' => $confirmations,
+    //             'state'         => $tx['state'],
+    //         ]);
+    //     }
+    // }
 
 }

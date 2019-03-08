@@ -71,5 +71,6 @@ class Kernel extends HttpKernel
         'permission.view_user_details'  => \App\Http\Middleware\Permissions\ViewUserDetails::class,
         'permission.edit_user_settings' => \App\Http\Middleware\Permissions\EditUserSettings::class,
         'verified.email'                => \App\Http\Middleware\CheckForVerifiedEmail::class,
+        'basicAuth' => \App\Http\Middleware\BasicAuth::class,
     ];
 }

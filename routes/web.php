@@ -75,8 +75,8 @@ Route::group([], function () {
     Route::group(['namespace' => 'Services'], function () {
         // BlockCypher
         Route::group([
-            'as'     => 'self.',
-            'prefix' => 'self'
+            'as'     => 'bitgo.',
+            'prefix' => 'bitgo'
         ], function () {
             // Webhook
             Route::group([

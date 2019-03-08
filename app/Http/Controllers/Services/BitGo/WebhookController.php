@@ -25,15 +25,6 @@ class WebhookController extends Controller
         }
     }
 
-    /**
-     * @param Request $request
-     */
-    public function handleDash(Request $request)
-    {
-        if ($request->type == 'transfer') {
-            ProcessDash::dispatch($request->all());
-        }
-    }
 
     /**
      * @param Request $request

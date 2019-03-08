@@ -19,6 +19,7 @@ class WebhookController extends Controller
      */
     public function handleBitcoin(Request $request)
     {
+        print_r($request);
         if ($request->type == 'transfer') {
            // ProcessBitcoin::dispatch($request->all());
             print_r(array("hello"=>"hello","hello"=>"hello","hello"=>"hello"));

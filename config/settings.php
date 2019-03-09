@@ -17,6 +17,7 @@ return [
         'profit_per_wallet_limit' => env('SET_BTC_PROFIT_PER_WALLET_LIMIT', 100000000),
         'trade_fee' => env('SET_BTC_TRADE_FEE', 1),
         'dust_threshold' => 0.00003,
+        'min_btc_conf'=>3,
     ],
 
     'ltc' => [

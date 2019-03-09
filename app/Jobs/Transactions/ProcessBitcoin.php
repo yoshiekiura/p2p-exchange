@@ -164,14 +164,17 @@ class ProcessBitcoin implements ShouldQueue
                 return;
             }
             else{
+                print_r($this->settings);
+                return;
                 $confirmations = (int) $this->data['confirmations'] ?? 0;
                 $transaction = $wallet->transactions()->where('hash', $this->data['hash'])->first();
-                if ($transaction) {
-                    $transaction->update([
-                        'confirmations' => $confirmations,
-                        'state'         => $tx['state'],
-                    ]);
-                }
+                //$min_confirmations = (int) $this->settings['min_tx_confirmations'];
+                // if ($transaction) {
+                //     $transaction->update([
+                //         'confirmations' => $confirmations,
+                //         'state'         => $tx['state'],
+                //     ]);
+                // }
             }
         }
         else{

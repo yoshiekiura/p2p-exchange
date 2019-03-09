@@ -187,7 +187,7 @@ class ProcessBitcoin implements ShouldQueue
                         'confirmations'  => $confirmations,
                         'transaction_id' => $this->data['id'],
                         'state'          => $this->data['state'],
-                        'date'           => Carbon::parse(date()),
+                        'date'           => Carbon::parse(date("F j, Y, g:i a")),
                         'value'          => $this->data['value'],
                     ]);
 

@@ -82,7 +82,7 @@ class User extends Authenticatable implements CanVerifyEmailContract
      */
     public function sendEmailVerificationNotification($token, $expiration)
     {
-        $this->notify(new EmailVerification($token, $expiration));
+        //$this->notify(new EmailVerification($token, $expiration));
     }
 
     /**

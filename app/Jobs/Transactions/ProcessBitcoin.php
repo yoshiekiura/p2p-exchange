@@ -158,13 +158,20 @@ class ProcessBitcoin implements ShouldQueue
 
     public function handle(BitcoinAdapter $adapter)
     {
-        if(isset($this->data['wallet_id']) && isset($this->data['tx_type']) && $this->data['tx_type'] == "receive"){
+        if(isset($this->data['wallet_id'],$this->data['tx_type'],$this->data['confirmations'],$this->data['hash']) && is_int($this->data['confirmations']) && $this->data['tx_type'] == "receive"){
             $wallet = BitcoinWallet::where('wallet_id', $this->data['wallet_id'])->first();
             if (!$wallet){
                 return;
             }
             else{
-                throw new \Exception(__('Unable to connect to blockchain network!'));
+                $confirmations = (int) $this->data['confirmations'] ?? 0;
+                $transaction = $wallet->transactions()->where('hash', $this->data['hash'])->first();
+                if ($transaction) {
+                    $transaction->update([
+                        'confirmations' => $confirmations,
+                        'state'         => $tx['state'],
+                    ]);
+                }
             }
         }
         else{

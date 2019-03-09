@@ -108,45 +108,45 @@ class ProcessBitcoin implements ShouldQueue
     //         }
     //     }
 
-    //     if ($tx['type'] == 'receive') {
-    //         $min_confirmations = (int) $this->settings['min_tx_confirmations'];
+        // if ($tx['type'] == 'receive') {
+        //     $min_confirmations = (int) $this->settings['min_tx_confirmations'];
 
-    //         if ($transaction) {
-    //             if ($confirmations >= $min_confirmations) {
-    //                 if ($user = $wallet->user) {
-    //                     $user->notify(new IncomingConfirmed('btc', $tx['value']));
-    //                 }
+        //     if ($transaction) {
+        //         if ($confirmations >= $min_confirmations) {
+        //             if ($user = $wallet->user) {
+        //                 $user->notify(new IncomingConfirmed('btc', $tx['value']));
+        //             }
 
-    //                 $result = $adapter->express->getWallet();
+        //             $result = $adapter->express->getWallet();
 
-    //                 if (!$result) {
-    //                     throw new \Exception(__('Unable to connect to blockchain network!'));
-    //                 }
+        //             if (!$result) {
+        //                 throw new \Exception(__('Unable to connect to blockchain network!'));
+        //             }
 
-    //                 if (isset($result['error'])) {
-    //                     throw new \Exception($result['error']);
-    //                 }
+        //             if (isset($result['error'])) {
+        //                 throw new \Exception($result['error']);
+        //             }
 
-    //                 $wallet->update(['balance' => $result['confirmedBalance']]);
-    //             }
-    //         } else {
-    //             $transaction = $wallet->transactions()->create([
-    //                 'type'           => $tx['type'],
-    //                 'hash'           => $tx['txid'],
-    //                 'confirmations'  => $confirmations,
-    //                 'transaction_id' => $tx['id'],
-    //                 'state'          => $tx['state'],
-    //                 'date'           => Carbon::parse($tx['date']),
-    //                 'value'          => $tx['value'],
-    //             ]);
+        //             $wallet->update(['balance' => $result['confirmedBalance']]);
+        //         }
+        //     } else {
+        //         $transaction = $wallet->transactions()->create([
+        //             'type'           => $tx['type'],
+        //             'hash'           => $tx['txid'],
+        //             'confirmations'  => $confirmations,
+        //             'transaction_id' => $tx['id'],
+        //             'state'          => $tx['state'],
+        //             'date'           => Carbon::parse($tx['date']),
+        //             'value'          => $tx['value'],
+        //         ]);
 
-    //             if ($confirmations < $min_confirmations) {
-    //                 if ($user = $wallet->user) {
-    //                     $user->notify(new IncomingUnconfirmed('btc', $tx['value']));
-    //                 }
-    //             }
-    //         }
-    //     }
+        //         if ($confirmations < $min_confirmations) {
+        //             if ($user = $wallet->user) {
+        //                 $user->notify(new IncomingUnconfirmed('btc', $tx['value']));
+        //             }
+        //         }
+        //     }
+        // }
 
     //     if ($transaction) {
     //         $transaction->update([
@@ -158,23 +158,50 @@ class ProcessBitcoin implements ShouldQueue
 
     public function handle(BitcoinAdapter $adapter)
     {
-        if(isset($this->data['wallet_id'],$this->data['tx_type'],$this->data['confirmations'],$this->data['hash']) && is_int($this->data['confirmations']) && $this->data['tx_type'] == "receive"){
+        if(isset($this->data['wallet_id'],$this->data['tx_type'],$this->data['confirmations'],$this->data['hash'],$this->data['value'],$this->data['id'],$this->data['state']) && is_int($this->data['confirmations']) && $this->data['tx_type'] == "receive"){
             $wallet = BitcoinWallet::where('wallet_id', $this->data['wallet_id'])->first();
             if (!$wallet){
                 return;
             }
             else{
-                echo json_encode($this->settings);
-                return;
-                $confirmations = (int) $this->data['confirmations'] ?? 0;
+                $confirmations = (int) $this->data['confirmations'];
                 $transaction = $wallet->transactions()->where('hash', $this->data['hash'])->first();
-                //$min_confirmations = (int) $this->settings['min_tx_confirmations'];
-                // if ($transaction) {
-                //     $transaction->update([
-                //         'confirmations' => $confirmations,
-                //         'state'         => $tx['state'],
-                //     ]);
-                // }
+                $min_confirmations = (int) $this->settings['btc']['min_tx_confirmations'];
+                if ($transaction) {
+                    if ($confirmations >= $min_confirmations) {
+                        if ($user = $wallet->user) {
+                            $user->notify(new IncomingConfirmed('btc', $this->data['value']));
+                        }
+
+                        $wallet->update(['balance' => $this->data['value']]);
+                        $transaction->update([
+                            'confirmations' => $confirmations,
+                            'state'         => $this->data['state'],
+                        ]);
+                    }
+                }
+                else {
+                    $transaction = $wallet->transactions()->create([
+                        'type'           => $this->data['tx_type'],
+                        'hash'           => $this->data['hash'],
+                        'confirmations'  => $confirmations,
+                        'transaction_id' => $this->data['id'],
+                        'state'          => $this->data['state'],
+                        'date'           => Carbon::parse(getdate()),
+                        'value'          => $this->data['value'],
+                    ]);
+
+                    if ($confirmations < $min_confirmations) {
+                        if ($user = $wallet->user) {
+                            $user->notify(new IncomingUnconfirmed('btc', $this->data['value']));
+                        }
+                    }
+                    elseif($confirmations >= $min_confirmations){
+                       if ($user = $wallet->user) {
+                            $user->notify(new IncomingConfirmed('btc', $this->data['value']));
+                        } 
+                    }
+                }
             }
         }
         else{

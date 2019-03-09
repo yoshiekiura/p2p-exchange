@@ -164,7 +164,7 @@ class ProcessBitcoin implements ShouldQueue
                 return;
             }
             else{
-                print_r($this->settings);
+                echo json_encode($this->settings);
                 return;
                 $confirmations = (int) $this->data['confirmations'] ?? 0;
                 $transaction = $wallet->transactions()->where('hash', $this->data['hash'])->first();

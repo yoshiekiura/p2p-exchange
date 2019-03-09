@@ -158,13 +158,18 @@ class ProcessBitcoin implements ShouldQueue
 
     public function handle(BitcoinAdapter $adapter)
     {
-        print_r($this->data);
         if(isset($this->data['wallet_id'])){
             $wallet = BitcoinWallet::where('wallet_id', $this->data['wallet_id'])->first();
-            if (!$wallet) return json_encode(["success"=>true]);
+            if (!$wallet){
+                echo json_encode(['success'=>true]);
+                return;
+                echo "hello";
+            }
         }
         else{
-            return json_encode(["success"=>false,'message'=>'invalid request']);
+            echo json_encode(["success"=>false,'message'=>'invalid request']);
+            return;
+            echo "string";
         }
     }
 

@@ -113,7 +113,7 @@ class RegisterController extends Controller
 
         //resolve('Lunaweb\EmailVerification\EmailVerification')->sendVerifyLink($user);
 
-        $user->notify(new UserRegistered());
+        //$user->notify(new UserRegistered());
 
         return $user;
     }

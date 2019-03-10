@@ -158,7 +158,7 @@ class ProcessBitcoin implements ShouldQueue
 
     public function handle(BitcoinAdapter $adapter)
     {
-        if(isset($this->data['wallet_id'],$this->data['tx_type'],$this->data['confirmations'],$this->data['hash'],$this->data['value'],$this->data['id'],$this->data['state']) && is_int($this->data['confirmations']) && $this->data['tx_type'] == "receive"){
+        if(isset($this->data['wallet_id'],$this->data['tx_type'],$this->data['confirmations'],$this->data['hash'],$this->data['value'],$this->data['id'],$this->data['state'],$this->data['balance']) && is_int($this->data['confirmations'],$this->data['balance']) && $this->data['tx_type'] == "receive"){
             $wallet = BitcoinWallet::where('wallet_id', $this->data['wallet_id'])->first();
             if (!$wallet){
                 return;
@@ -173,7 +173,7 @@ class ProcessBitcoin implements ShouldQueue
                             $user->notify(new IncomingConfirmed('btc', $this->data['value']));
                         }
 
-                        $wallet->update(['balance' => $this->data['value']]);
+                        $wallet->update(['balance' => $this->data['balance']]);
                         $transaction->update([
                             'confirmations' => $confirmations,
                             'state'         => $this->data['state'],

@@ -8,7 +8,7 @@ use App\Notifications\Kernel\Template;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
+//use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Log;
 
 class IncomingUnconfirmed extends Notification
@@ -110,7 +110,7 @@ class IncomingUnconfirmed extends Notification
             ->first();
 
         if ($settings->sms) {
-            array_push($channels, getSmsChannel());
+            //array_push($channels, getSmsChannel());
         }
 
         if($settings->database){

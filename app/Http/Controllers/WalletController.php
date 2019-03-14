@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Cryptocompare\Price;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -54,7 +55,23 @@ class WalletController extends Controller
     {
         if ($request->ajax()) {
             if ($wallet = Auth::user()->getCoinWallet($coin)->first()) {
-                $message = __('You can generate only one address.');
+                if($currency = $request->currency){
+                    $min_offer_amount = currency_convert(
+                        (float) config('settings.min_offer_amount'), 'USD', $currency
+                    );
+
+                    $min_amount_rule = "required|numeric|min:{$min_offer_amount}";
+
+                    $max_offer_amount = currency_convert(
+                        (float) config('settings.max_offer_amount'), 'USD', $currency
+                    );
+
+                    $max_amount_rule = "required|numeric|max:{$max_offer_amount}|gte:min_amount";
+                }else{
+                    $min_amount_rule = 'required|numeric|min:0';
+                    $max_amount_rule = 'required|numeric|min:0|gte:min_amount';
+                }
+                $message = __($min_amount_rule.$max_amount_rule);
                 return success_response($request, $message);
                 //$adapter = getBlockchainAdapter($coin);
                 // if ($wallet->transactions()->count()) {

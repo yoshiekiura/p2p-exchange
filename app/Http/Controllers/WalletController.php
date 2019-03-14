@@ -55,7 +55,8 @@ class WalletController extends Controller
     {
         if ($request->ajax()) {
             if ($wallet = Auth::user()->getCoinWallet($coin)->first()) {
-                if($currency = $request->currency){
+                $cc = Auth::user()->currency;
+                if($currency = $cc){
                     $min_offer_amount = currency_convert(
                         (float) config('settings.min_offer_amount'), 'USD', $currency
                     );

@@ -255,6 +255,5 @@
                 'coins' => get_coins(),
                 'coin_prices' => get_prices(),
             ]) !!}
-        console.log(window._vueData);
     </script>
 @endpush

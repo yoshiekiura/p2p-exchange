@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\BitcoinWallet;
 ///use App\Models\DashWallet;
 use App\Models\LitecoinWallet;
+use App\Models\Offer;
+use App\Models\PaymentMethodCategory;
 use App\Models\User;
 use Carbon\Carbon;
 use Cryptocompare\Price;

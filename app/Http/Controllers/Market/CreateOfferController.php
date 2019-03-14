@@ -56,8 +56,6 @@ class CreateOfferController extends Controller
         $payment_methods = collect($this->getPaymentMethods());
         $coins = collect(get_coins());
         $currencies = collect(get_iso_currencies());
-        var_dump($min_amount_rule);
-        var_dump($max_amount_rule);
         if (in_array($type, ['buy', 'sell'])) {
             $user = Auth::user();
 

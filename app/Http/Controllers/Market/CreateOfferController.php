@@ -38,19 +38,19 @@ class CreateOfferController extends Controller
     {
         if($currency = $request->currency){
             $min_offer_amount = currency_convert(
-                (float) 1, 'USD', $currency
+                (float) config('settings.min_offer_amount'), 'USD', $currency
             );
 
             $min_amount_rule = "required|numeric|min:{$min_offer_amount}";
 
             $max_offer_amount = currency_convert(
-                (float) 10000, 'USD', $currency
+                (float) config('settings.max_offer_amount'), 'USD', $currency
             );
 
-            $max_amount_rule = "required|numeric|max:{$max_offer_amount}|gte:min_amount";
+            $max_amount_rule = "required|numeric|max:{$max_offer_amount}|gte:{$min_offer_amount}";
         }else{
             $min_amount_rule = 'required|numeric|min:0';
-            $max_amount_rule = 'required|numeric|max:10000|gte:min_amount';
+            $max_amount_rule = 'required|numeric|min:0|gte:min_amount';
         }
 
         $payment_methods = collect($this->getPaymentMethods());

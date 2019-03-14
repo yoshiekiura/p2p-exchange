@@ -50,7 +50,7 @@ class CreateOfferController extends Controller
             $max_amount_rule = "required|numeric|max:{$max_offer_amount}|gte:min_amount";
         }else{
             $min_amount_rule = 'required|numeric|min:0';
-            $max_amount_rule = 'required|numeric|min:0|gte:min_amount';
+            $max_amount_rule = 'required|numeric|max:10000|gte:min_amount';
         }
 
         $payment_methods = collect($this->getPaymentMethods());

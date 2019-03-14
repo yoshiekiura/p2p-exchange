@@ -72,7 +72,7 @@ class WalletController extends Controller
                     $min_amount_rule = 'required|numeric|min:0';
                     $max_amount_rule = 'required|numeric|min:0|gte:min_amount';
                 }
-                $message = __($min_amount_rule.'||||'.$max_amount_rule.'||||'.$cc);
+                $message = __($min_amount_rule.'||||'.$max_amount_rule.'||||'.$min_offer_amount.'||||'.$max_offer_amount);
                 return success_response($request, $message);
                 //$adapter = getBlockchainAdapter($coin);
                 // if ($wallet->transactions()->count()) {

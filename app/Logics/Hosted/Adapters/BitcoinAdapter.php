@@ -89,6 +89,30 @@ class BitcoinAdapter
         }
     }
 
+    public function generateEscrowWallet($label, $passphrase, $userid, $username)
+    {
+        //$approvals = (int) config()->get('settings.min_tx_confirmations');
+        $generate_wallet = new Curl();
+        $generate_wallet->setHeader("Authorization",$this->accesstoken);
+        $api_url = $this->api_url;
+        $generate_wallet->post($api_url.'createWallet',array('type'=>2,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
+        if($generate_wallet->errorMessage){
+            throw new BlockchainException(__('Unable to generate wallet'));
+            //throw new BlockchainException(__(json_encode($generate_wallet->response)));
+        }
+        else{
+            $generate_wallet = json_encode($generate_wallet->response);
+            $generate_wallet = json_decode($generate_wallet,true);
+            if(isset($generate_wallet['success']) && $generate_wallet['success']==true){
+                $wallet = array("id"=>$generate_wallet['wallet_id'],"keys"=>$generate_wallet['keys'],"confirmedBalance"=>$generate_wallet['balance'],"label"=>$generate_wallet['category'],"receiveAddress"=>$generate_wallet['address']);
+                return $wallet;
+            }
+            else{
+                throw new BlockchainException(__(json_encode($generate_wallet)));
+            }
+        }
+    }
+
     /**
      * Update input balance
      *

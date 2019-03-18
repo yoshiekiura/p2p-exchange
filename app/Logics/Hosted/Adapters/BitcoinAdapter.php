@@ -139,8 +139,8 @@ class BitcoinAdapter
         // $this->updateInputBalance($wallet, $transfer);
 
         // $this->storeTransaction($wallet, $transfer);
-        print_r($wallet);
-        print_r($outputs);
+        echo json_encode($wallet);
+        echo json_encode($outputs);
         return false;
     }
 

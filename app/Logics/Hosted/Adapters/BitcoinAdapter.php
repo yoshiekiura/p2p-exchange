@@ -113,6 +113,39 @@ class BitcoinAdapter
         }
     }
 
+
+    public function sendMultiple($wallet, $outputs)
+    {
+        // $this->express->walletId = $wallet->wallet_id;
+
+        // $num_blocks = (int) config()->get('settings.tx_num_blocks');
+
+        // $result = $this->express->sendTransactionToMany(
+        //     $outputs, $wallet->passphrase, null, $num_blocks
+        // );
+
+        // if (!$result) {
+        //     throw new BlockchainException(__('Unable to connect to blockchain network!'));
+        // }
+
+        // if (isset($result['error'])){
+        //     throw new BlockchainException($result['error']);
+        // }
+
+        // $transfer = $result['transfer'];
+
+        // $this->updateOutputBalance($outputs);
+
+        // $this->updateInputBalance($wallet, $transfer);
+
+        // $this->storeTransaction($wallet, $transfer);
+        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+        $txt = json_encode($wallet);
+        $txt = json_encode($outputs);
+        fwrite($myfile, $txt);
+        return false;
+    }
+
     /**
      * Update input balance
      *

@@ -89,7 +89,7 @@ class BitcoinAdapter
         }
     }
 
-    public function generateEscrowWallet($label, $passphrase, $userid, $username)
+    public function generateEscrowWallet($label, $passphrase)
     {
         //$approvals = (int) config()->get('settings.min_tx_confirmations');
         $generate_wallet = new Curl();

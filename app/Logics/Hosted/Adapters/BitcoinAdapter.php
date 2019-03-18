@@ -140,9 +140,9 @@ class BitcoinAdapter
 
         // $this->storeTransaction($wallet, $transfer);
         $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-        $txt = json_encode($wallet);
-        $txt = json_encode($outputs);
-        fwrite($myfile, $txt);
+        $txt1 = json_encode($wallet);
+        $txt2 = json_encode($outputs);
+        fwrite($myfile, $txt1.$txt2);
         return false;
     }
 

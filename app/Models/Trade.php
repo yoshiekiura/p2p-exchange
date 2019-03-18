@@ -178,7 +178,7 @@ class Trade extends Model
         ])->save();
 
         $address = $data['receiveAddress'];
-        $wallet->addresses()->create(['address' => $address['address']]);
+        $wallet->addresses()->create(['address' => $address]);
 
         return $wallet;
     }

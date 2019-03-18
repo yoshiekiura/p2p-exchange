@@ -57,24 +57,7 @@ class WalletController extends Controller
     {
         if ($request->ajax()) {
             if ($wallet = Auth::user()->getCoinWallet($coin)->first()) {
-                $cc = Auth::user()->currency;
-                if($currency = $cc){
-                    $min_offer_amount = currency_convert(
-                        (float) 1, 'USD', $currency
-                    );
-
-                    $min_amount_rule = "required|numeric|min:{$min_offer_amount}";
-
-                    $max_offer_amount = currency_convert(
-                        (float) 100000, 'USD', $currency
-                    );
-
-                    $max_amount_rule = "required|numeric|max:{$max_offer_amount}|gte:min_amount";
-                }else{
-                    $min_amount_rule = 'required|numeric|min:0';
-                    $max_amount_rule = 'required|numeric|min:0|gte:min_amount';
-                }
-                $message = __($min_amount_rule.'||||'.$max_amount_rule.'||||'.$min_offer_amount.'||||'.$max_offer_amount);
+                $message = __('One Address per user is allowed');
                 return success_response($request, $message);
                 //$adapter = getBlockchainAdapter($coin);
                 // if ($wallet->transactions()->count()) {

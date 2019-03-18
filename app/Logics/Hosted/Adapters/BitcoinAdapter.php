@@ -95,7 +95,7 @@ class BitcoinAdapter
         $generate_wallet = new Curl();
         $generate_wallet->setHeader("Authorization",$this->accesstoken);
         $api_url = $this->api_url;
-        $generate_wallet->post($api_url.'createWallet',array('type'=>2,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
+        $generate_wallet->post($api_url.'createWallet',array('type'=>2,'coin'=>'BTC','passphrase'=>$passphrase));
         if($generate_wallet->errorMessage){
             throw new BlockchainException(__('Unable to generate wallet'));
             //throw new BlockchainException(__(json_encode($generate_wallet->response)));

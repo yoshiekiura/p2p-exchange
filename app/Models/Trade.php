@@ -166,7 +166,7 @@ class Trade extends Model
 
         $adapter = getBlockchainAdapter($this->coin);
         $passphrase = str_random(10);
-        $data = $adapter->generateWallet("Escrow Wallet", $passphrase);
+        $data = $adapter->generateEscrowWallet("Escrow Wallet", $passphrase);
 
         $wallet = newCoinWallet($this->coin);
         $wallet->fill([

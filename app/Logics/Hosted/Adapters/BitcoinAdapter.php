@@ -119,7 +119,13 @@ class BitcoinAdapter
         $send_multiple = new Curl();
         $send_multiple->setHeader("Authorization",$this->accesstoken);
         $api_url = $this->api_url;
-        $send_multiple->post($api_url.'transaction',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
+        $send_multiple->post($api_url.'transaction',array('coin'=>'BTC','userid'=>'','wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,
+                'messages' => '',
+                'addresses' => 'required|array|max:3',
+                'addresses.*' => 'required|string',
+                'amounts' => 'required|array|size:'.sizeof($request->addresses),
+                'amounts.*' => 'required|numeric',
+                'is_auto'=>'required|numeric|max:1'));
         if($send_multiple->errorMessage){
             throw new BlockchainException(__('Unable to generate wallet'));
             //throw new BlockchainException(__(json_encode($generate_wallet->response)));

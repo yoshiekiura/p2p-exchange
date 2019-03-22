@@ -50,7 +50,8 @@ class IncomingConfirmed extends Notification
      *
      * @var array
      */
-    private static $channels = ['mail', 'database', 'sms'];
+    //private static $channels = ['mail', 'database', 'sms'];
+    private static $channels = ['database'];
 
     /**
      * Allow/Disallow Custom Action

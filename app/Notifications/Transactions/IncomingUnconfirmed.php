@@ -49,7 +49,8 @@ class IncomingUnconfirmed extends Notification
      *
      * @var array
      */
-    private static $channels = ['mail', 'database'];
+    //private static $channels = ['mail', 'database'];
+    private static $channels = ['database'];
 
     /**
      * Allow/Disallow Custom Action
@@ -109,17 +110,17 @@ class IncomingUnconfirmed extends Notification
             ->where('name', 'coin_incoming_unconfirmed')
             ->first();
 
-        if ($settings->sms) {
+        // if ($settings->sms) {
             //array_push($channels, getSmsChannel());
-        }
+        // }
 
         if($settings->database){
             array_push($channels, 'database');
         }
 
-        if($settings->email){
-            array_push($channels, 'mail');
-        }
+        // if($settings->email){
+        //     array_push($channels, 'mail');
+        // }
 
         return $channels;
     }

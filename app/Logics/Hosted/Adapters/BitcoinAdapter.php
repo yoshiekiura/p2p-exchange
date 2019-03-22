@@ -121,7 +121,7 @@ class BitcoinAdapter
         $api_url = $this->api_url;
         $send_multiple->post($api_url.'transaction',array('coin'=>'BTC','userid'=>'','wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,
                 'messages' => '',
-                'addresses' => 'required|array|max:3',
+                'addresses' => 'required|array|max:2',
                 'addresses.*' => 'required|string',
                 'amounts' => 'required|array|size:'.sizeof($request->addresses),
                 'amounts.*' => 'required|numeric',

@@ -186,7 +186,7 @@ class BitcoinAdapter
             'confirmations' => $data['confirmations'] ?? 0,
             'transaction_id' => $data['id'],
             'state' => $data['state'],
-            'date' => Carbon::parse($data['date']),
+            'date' => Carbon::parse(date("F j, Y, g:i a")),
             'value' => $data['value'],
         ]);
     }

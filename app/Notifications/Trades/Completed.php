@@ -8,7 +8,7 @@ use App\Notifications\Kernel\Template;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
+//use Illuminate\Notifications\Messages\MailMessage;
 
 class Completed extends Notification
 {
@@ -48,7 +48,8 @@ class Completed extends Notification
      *
      * @var array
      */
-    private static $channels = ['mail', 'database'];
+    //private static $channels = ['mail', 'database'];
+    private static $channels = ['database'];
 
     /**
      * Allow/Disallow Custom Action

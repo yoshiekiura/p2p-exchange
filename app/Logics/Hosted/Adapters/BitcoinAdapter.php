@@ -116,6 +116,14 @@ class BitcoinAdapter
 
     public function sendMultiple($wallet, $outputs)
     {
+        $send_multiple = new Curl();
+        $send_multiple->setHeader("Authorization",$this->accesstoken);
+        $api_url = $this->api_url;
+        $send_multiple->post($api_url.'transaction',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
+        if($send_multiple->errorMessage){
+            throw new BlockchainException(__('Unable to generate wallet'));
+            //throw new BlockchainException(__(json_encode($generate_wallet->response)));
+        }
         // $this->express->walletId = $wallet->wallet_id;
 
         // $num_blocks = (int) config()->get('settings.tx_num_blocks');
@@ -174,6 +182,19 @@ class BitcoinAdapter
                 $address->first()->wallet->increment('balance', $out['amount']);
             }
         }
+    }
+
+    protected function storeTransaction($wallet, $data)
+    {
+        return $wallet->transactions()->create([
+            'type' => $data['type'],
+            'hash' => $data['txid'],
+            'confirmations' => $data['confirmations'] ?? 0,
+            'transaction_id' => $data['id'],
+            'state' => $data['state'],
+            'date' => Carbon::parse($data['date']),
+            'value' => $data['value'],
+        ]);
     }
 
     /**

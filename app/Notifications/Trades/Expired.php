@@ -9,7 +9,7 @@ use App\Notifications\Kernel\Template;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
+//use Illuminate\Notifications\Messages\MailMessage;
 
 class Expired extends Notification
 {
@@ -49,8 +49,8 @@ class Expired extends Notification
      *
      * @var array
      */
-    private static $channels = ['mail', 'database'];
-
+    //private static $channels = ['mail', 'database'];
+    private static $channels = ['database'];
     /**
      * Allow/Disallow Custom Action
      *
@@ -103,17 +103,17 @@ class Expired extends Notification
             ->where('name', 'trade_cancelled_or_expired')
             ->first();
 
-        if($settings->sms) {
-            array_push($channels, getSmsChannel());
-        }
+        // if($settings->sms) {
+        //     array_push($channels, getSmsChannel());
+        // }
 
         if($settings->database){
             array_push($channels, 'database');
         }
 
-        if($settings->email){
-            array_push($channels, 'mail');
-        }
+        // if($settings->email){
+        //     array_push($channels, 'mail');
+        // }
 
         return $channels;
     }

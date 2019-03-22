@@ -9,7 +9,7 @@ use App\Notifications\Kernel\Template;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
+//use Illuminate\Notifications\Messages\MailMessage;
 
 class Started extends Notification
 {
@@ -49,8 +49,8 @@ class Started extends Notification
      *
      * @var array
      */
-    private static $channels = ['mail', 'database', 'sms'];
-
+    //private static $channels = ['mail', 'database', 'sms'];
+    private static $channels = ['database'];
     /**
      * Allow/Disallow Custom Action
      *
@@ -104,17 +104,17 @@ class Started extends Notification
             ->where('name', 'new_trade')
             ->first();
 
-        if ($settings->sms) {
-            array_push($channels, getSmsChannel());
-        }
+        // if ($settings->sms) {
+        //     array_push($channels, getSmsChannel());
+        // }
 
         if($settings->database){
             array_push($channels, 'database');
         }
 
-        if($settings->email){
-            array_push($channels, 'mail');
-        }
+        // if($settings->email){
+        //     array_push($channels, 'mail');
+        // }
 
         return $channels;
     }

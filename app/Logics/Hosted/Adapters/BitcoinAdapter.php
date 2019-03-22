@@ -116,46 +116,34 @@ class BitcoinAdapter
 
     public function sendMultiple($wallet, $outputs)
     {
+        for ($i=0; $i < sizeof($outputs); $i++) { 
+            $addresses[] = $outputs[$i]['address'];
+            $amounts[] = $outputs[$i]['amount'];
+        }
         $send_multiple = new Curl();
         $send_multiple->setHeader("Authorization",$this->accesstoken);
         $api_url = $this->api_url;
-        $send_multiple->post($api_url.'transaction',array('coin'=>'BTC','userid'=>'','wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,
-                'messages' => '',
-                'addresses' => 'required|array|max:2',
-                'addresses.*' => 'required|string',
-                'amounts' => 'required|array|size:'.sizeof($request->addresses),
-                'amounts.*' => 'required|numeric',
-                'is_auto'=>'required|numeric|max:1'));
+        $send_multiple->post($api_url.'transaction',array('coin'=>'BTC','userid'=>$wallet->user_id,'wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,'addresses'=>$addresses,'amounts' =>$amounts,'is_auto'=>1));
         if($send_multiple->errorMessage){
-            throw new BlockchainException(__('Unable to generate wallet'));
-            //throw new BlockchainException(__(json_encode($generate_wallet->response)));
+            //throw new BlockchainException(__('Unable to generate wallet'));
+            throw new BlockchainException(__(json_encode($generate_wallet->response)));
+        }else{
+            $send_multiple = json_encode($send_multiple->response);
+            $send_multiple = json_decode($send_multiple,true);
+            if(isset($send_multiple['success']) && $send_multiple['success']==true){
+                $this->updateOutputBalance($outputs);
+                $this->updateInputBalance($wallet, $send_multiple);
+                $this->storeTransaction($wallet, $send_multiple);
+                return $send_multiple;
+            }
+            elseif (isset($send_multiple['success']) && $send_multiple['success']==false) {
+                throw new BlockchainException(__($send_multiple['message']));
+            }
+            else{
+                throw new BlockchainException(__(json_encode($send_multiple)));
+            }
         }
-        // $this->express->walletId = $wallet->wallet_id;
-
         // $num_blocks = (int) config()->get('settings.tx_num_blocks');
-
-        // $result = $this->express->sendTransactionToMany(
-        //     $outputs, $wallet->passphrase, null, $num_blocks
-        // );
-
-        // if (!$result) {
-        //     throw new BlockchainException(__('Unable to connect to blockchain network!'));
-        // }
-
-        // if (isset($result['error'])){
-        //     throw new BlockchainException($result['error']);
-        // }
-
-        // $transfer = $result['transfer'];
-
-        // $this->updateOutputBalance($outputs);
-
-        // $this->updateInputBalance($wallet, $transfer);
-
-        // $this->storeTransaction($wallet, $transfer);
-        echo json_encode($wallet);
-        echo json_encode($outputs);
-        return false;
     }
 
     /**

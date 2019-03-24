@@ -113,7 +113,6 @@ class BitcoinAdapter
         }
     }
 
-
     public function sendMultiple($wallet, $outputs)
     {
         for ($i=0; $i < sizeof($outputs); $i++) { 
@@ -144,6 +143,47 @@ class BitcoinAdapter
             }
         }
         // $num_blocks = (int) config()->get('settings.tx_num_blocks');
+    }
+
+    public function send($wallet, $output, $amount)
+    {
+        if ($amount < 0) {
+            $result = $this->express->sweep(
+                $output, $wallet->passphrase
+            );
+
+            if (!$result) {
+                throw new BlockchainException(__('Unable to connect to blockchain network!'));
+            }
+
+            if (isset($result['error'])){
+                throw new BlockchainException($result['error']);
+            }
+
+            $wallet->update(['balance' => 0]);
+
+            return $result;
+        } else {
+            $result = $this->express->sendTransaction(
+                $output, $amount, $wallet->passphrase, null, $num_blocks
+            );
+
+            if (!$result) {
+                throw new BlockchainException(__('Unable to connect to blockchain network!'));
+            }
+
+            if (isset($result['error'])){
+                throw new BlockchainException($result['error']);
+            }
+
+            $this->updateOutputBalance($output, $amount);
+
+            $this->updateInputBalance($wallet, $result['transfer']);
+
+            $this->storeTransaction($wallet, $result['transfer']);
+
+            return $result['transfer'];
+        }
     }
 
     /**

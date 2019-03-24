@@ -57,8 +57,9 @@ class WalletController extends Controller
     {
         if ($request->ajax()) {
             if ($wallet = Auth::user()->getCoinWallet($coin)->first()) {
-
-                $message = __('One Address per user is allowed');
+                $amount = coin(123456, $coin, true)
+                    ->getAmount();
+                $message = __('One Address per user is allowed'.$amount);
                 return success_response($request, $message);
                 //$adapter = getBlockchainAdapter($coin);
                 // if ($wallet->transactions()->count()) {

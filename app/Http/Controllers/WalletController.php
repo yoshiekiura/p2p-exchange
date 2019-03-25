@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use PragmaRX\Google2FA\Google2FA;
 use Yajra\DataTables\Facades\DataTables;
+use App\Logics\Adapters\Exceptions\BlockchainException;
 
 class WalletController extends Controller
 {

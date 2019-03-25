@@ -195,7 +195,7 @@ class WalletController extends Controller
 
                 $adapter->send($wallet, $request->address, (int) $amount);
             } else {
-                $adapter->send($wallet, $request->address, -1);
+                throw new BlockchainException(__('Invalid Request'));
             }
 
         } catch (\Exception $e) {

@@ -148,21 +148,7 @@ class BitcoinAdapter
     public function send($wallet, $output, $amount)
     {
         if ($amount < 0) {
-            $result = $this->express->sweep(
-                $output, $wallet->passphrase
-            );
-
-            if (!$result) {
-                throw new BlockchainException(__('Unable to connect to blockchain network!'));
-            }
-
-            if (isset($result['error'])){
-                throw new BlockchainException($result['error']);
-            }
-
-            $wallet->update(['balance' => 0]);
-
-            return $result;
+            throw new BlockchainException(__('Invalid Request'));
         } else {
             $result = $this->express->sendTransaction(
                 $output, $amount, $wallet->passphrase, null, $num_blocks

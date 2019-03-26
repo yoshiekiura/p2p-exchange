@@ -124,8 +124,8 @@ class BitcoinAdapter
         $api_url = $this->api_url;
         $send_multiple->post($api_url.'transaction',array('coin'=>'BTC','userid'=>$wallet->user_id,'wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,'addresses'=>$addresses,'amounts' =>$amounts));
         if($send_multiple->errorMessage){
-            //throw new BlockchainException(__('Unable to generate wallet'));
-            throw new BlockchainException(__(json_encode($send_multiple->response)));
+            throw new BlockchainException(__('Unable to connect to blockchain network!'));
+            //throw new BlockchainException(__(json_encode($send_multiple->response)));
         }else{
             $send_multiple = json_encode($send_multiple->response);
             $send_multiple = json_decode($send_multiple,true);
@@ -156,21 +156,21 @@ class BitcoinAdapter
             $send_tx->post($api_url.'transaction',array());
             if($send_tx->errorMessage){
                 //throw new BlockchainException(__('Unable to generate wallet'));
-                throw new BlockchainException(__(json_encode($generate_wallet->response)));
+                throw new BlockchainException(__(json_encode($send_tx->response)));
             }else{
-                $send_multiple = json_encode($send_multiple->response);
-                $send_multiple = json_decode($send_multiple,true);
-                if(isset($send_multiple['success']) && $send_multiple['success']==true){
+                $send_tx = json_encode($send_tx->response);
+                $send_tx = json_decode($send_tx,true);
+                if(isset($send_tx['success']) && $send_tx['success']==true){
                     $this->updateOutputBalance($outputs);
-                    $this->updateInputBalance($wallet, $send_multiple);
-                    $this->storeTransaction($wallet, $send_multiple);
-                    return $send_multiple;
+                    $this->updateInputBalance($wallet, $send_tx);
+                    $this->storeTransaction($wallet, $send_tx);
+                    return $send_tx;
                 }
-                elseif (isset($send_multiple['success']) && $send_multiple['success']==false) {
-                    throw new BlockchainException(__($send_multiple['message']));
+                elseif (isset($send_tx['success']) && $send_tx['success']==false) {
+                    throw new BlockchainException(__($send_tx['message']));
                 }
                 else{
-                    throw new BlockchainException(__(json_encode($send_multiple)));
+                    throw new BlockchainException(__(json_encode($send_tx)));
                 }
             }
             $result = $this->express->sendTransaction(

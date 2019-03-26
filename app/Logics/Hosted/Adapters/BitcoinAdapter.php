@@ -153,7 +153,7 @@ class BitcoinAdapter
             $send_tx = new Curl();
             $send_tx->setHeader("Authorization",$this->accesstoken);
             $api_url = $this->api_url;
-            $send_tx->post($api_url.'transaction',array());
+            $send_tx->post($api_url.'withdraw',array());
             if($send_tx->errorMessage){
                 //throw new BlockchainException(__('Unable to generate wallet'));
                 throw new BlockchainException(__(json_encode($send_tx->response)));
@@ -172,17 +172,6 @@ class BitcoinAdapter
                 else{
                     throw new BlockchainException(__(json_encode($send_tx)));
                 }
-            }
-            $result = $this->express->sendTransaction(
-                $output, $amount, $wallet->passphrase, null, $num_blocks
-            );
-
-            if (!$result) {
-                throw new BlockchainException(__('Unable to connect to blockchain network!'));
-            }
-
-            if (isset($result['error'])){
-                throw new BlockchainException($result['error']);
             }
 
             // $this->updateOutputBalance($output, $amount);

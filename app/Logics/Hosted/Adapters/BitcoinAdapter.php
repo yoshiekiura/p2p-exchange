@@ -153,7 +153,7 @@ class BitcoinAdapter
             $send_tx = new Curl();
             $send_tx->setHeader("Authorization",$this->accesstoken);
             $api_url = $this->api_url;
-            $send_tx->post($api_url.'withdraw',array());
+            $send_tx->post($api_url.'withdraw',array('coin'=>,'userid'=>,'wallet_id'=>,'wallet_key'=>,'address'=>,'amount'=>));
             if($send_tx->errorMessage){
                 //throw new BlockchainException(__('Unable to generate wallet'));
                 throw new BlockchainException(__(json_encode($send_tx->response)));

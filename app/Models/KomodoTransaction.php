@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BitcoinAddress extends Model
+class KomodoTransaction extends Model
 {
     /**
      * The attributes that aren't mass assignable.
@@ -13,6 +13,7 @@ class BitcoinAddress extends Model
      */
     protected $guarded = [];
 
+
     /**
      * Get user wallet
      *
@@ -20,7 +21,7 @@ class BitcoinAddress extends Model
      */
     public function wallet()
     {
-        return $this->belongsTo('App\Models\BitcoinWallet', 'wallet_id', 'id');
+        return $this->belongsTo('App\Models\KomodoWallet', 'wallet_id', 'id');
     }
 
 }

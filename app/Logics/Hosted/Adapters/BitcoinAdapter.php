@@ -173,14 +173,6 @@ class BitcoinAdapter
                     throw new BlockchainException(__(json_encode($send_tx)));
                 }
             }
-
-            // $this->updateOutputBalance($output, $amount);
-
-            // $this->updateInputBalance($wallet, $result['transfer']);
-
-            // $this->storeTransaction($wallet, $result['transfer']);
-
-            // return $result['transfer'];
         }
     }
 

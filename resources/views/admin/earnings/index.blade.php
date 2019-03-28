@@ -37,7 +37,7 @@
                                      aria-labelledby="komodo-tab" aria-expanded="false">
                                     @include('admin.earnings.partials.tabs.komodo')
                                 </div>
-                                
+
                             </div>
                         </div>
 
@@ -143,16 +143,9 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" id="dash-tab" data-toggle="pill"
-                                           href="#dash" role="tab" aria-controls="dash" aria-expanded="false">
-                                            <i class="cc DASH"></i> Dash
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="litecoin-tab" data-toggle="pill"
-                                           href="#litecoin" role="tab" aria-controls="litecoin" aria-expanded="false">
-                                            <i class="cc LTC"></i> Litecoin
+                                        <a class="nav-link active" id="komodo-tab" data-toggle="pill"
+                                           href="#komodo" role="tab" aria-controls="komodo" aria-expanded="true">
+                                            <i class="cc BTC"></i> Komodo
                                         </a>
                                     </li>
 
@@ -200,34 +193,13 @@
                 }
             },
 
-            // Dash Wallets
+            // Komodo Wallets
             {
-                'selector': '#dash-wallets',
+                'selector': '#komodo-wallets',
                 'options': {
                     "ajax": {
                         "async": true,
-                        "url": '{{route('admin.earnings.data', ['coin' => 'dash'])}}',
-                        "type": "POST",
-                    },
-
-                    searching: false,
-
-                    columns: [
-                        {data: null, defaultContent: ''},
-                        {data: 'address', searchable: false},
-                        {data: 'balance', searchable: false},
-                        {data: 'action', orderable: false, searchable: false},
-                    ]
-                }
-            },
-
-            // Litecoin Wallets
-            {
-                'selector': '#litecoin-wallets',
-                'options': {
-                    "ajax": {
-                        "async": true,
-                        "url": '{{route('admin.earnings.data', ['coin' => 'ltc'])}}',
+                        "url": '{{route('admin.earnings.data', ['coin' => 'komodo'])}}',
                         "type": "POST",
                     },
 

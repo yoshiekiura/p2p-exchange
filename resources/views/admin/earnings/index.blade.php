@@ -33,15 +33,11 @@
                                     @include('admin.earnings.partials.tabs.bitcoin')
                                 </div>
 
-                                <div role="tabpanel" class="tab-pane fade" id="litecoin"
-                                     aria-labelledby="litecoin-tab" aria-expanded="false">
-                                    @include('admin.earnings.partials.tabs.litecoin')
+                                <div role="tabpanel" class="tab-pane fade" id="komodo"
+                                     aria-labelledby="komodo-tab" aria-expanded="false">
+                                    @include('admin.earnings.partials.tabs.komodo')
                                 </div>
-
-                                <div class="tab-pane fade" id="settings" role="tabpanel"
-                                     aria-labelledby="settings-tab" aria-expanded="false">
-                                    @include('admin.earnings.partials.tabs.settings')
-                                </div>
+                                
                             </div>
                         </div>
 

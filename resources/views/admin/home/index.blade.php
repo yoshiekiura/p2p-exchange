@@ -136,7 +136,7 @@
                         </div>
 
                         <div class="col-xl-4">
-                            <div class="card crypto-card-3 bg-gradient-x-warning">
+                            <div class="card crypto-card-3 bg-warning">
                                 <div class="card-content">
                                     <div class="card-body cc KMD pb-1">
                                         <div class="row text-white">
@@ -157,6 +157,7 @@
                                 </div>
                             </div>
                         </div>
+
                         
                     </div>
                 </section>

@@ -26,7 +26,7 @@
                                 </div>
 
 
-                                <div role="tabpanel" class="tab-pane fade active in show" id="komodo"
+                                <div role="tabpanel" class="tab-pane fade" id="komodo"
                                      aria-labelledby="komodo-tab" aria-expanded="true">
                                     @include('wallet.partials.tabs.komodo')
                                 </div>
@@ -59,18 +59,12 @@
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="komodo-tab" data-toggle="pill"
+                                            <a class="nav-link" id="komodo-tab" data-toggle="pill"
                                                href="#komodo" role="tab" aria-controls="komodo" aria-expanded="true">
                                                 <i class="cc KMD-alt"></i> Komodo
                                             </a>
                                         </li>
 
-                                        <!-- <li class="nav-item">
-                                            <a class="nav-link" id="litecoin-tab" data-toggle="pill"
-                                               href="#litecoin" role="tab" aria-controls="litecoin" aria-expanded="true">
-                                                <i class="cc LTC-alt"></i> Litecoin
-                                            </a>
-                                        </li> -->
                                     </ul>
                                 </div>
                             </div>

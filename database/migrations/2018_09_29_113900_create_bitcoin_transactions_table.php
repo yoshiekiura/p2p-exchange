@@ -15,25 +15,19 @@ class CreateBitcoinTransactionsTable extends Migration
     {
         Schema::create('bitcoin_transactions', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->integer('address_id')->unsigned();
-            $table->foreign('address_id')->references('id')
-                ->on('bitcoin_addresses')->onDelete('cascade');
-
-            $table->enum('type', ['incoming', 'outgoing']);
-
-            // Required for outgoing transactions
-            $table->longText('output_address')->nullable();
-
-            $table->integer('value')->nullable();
-
-            $table->integer('fees')->nullable();
+            $table->string('transaction_id');
+            $table->integer('wallet_id')->unsigned()->nullable();
+            $table->foreign('wallet_id')->references('id')
+                ->on('bitcoin_wallets')->onDelete('cascade');
+            $table->enum('state', [
+                'unconfirmed', 'confirmed', 'pendingApproval',
+                'rejected', 'removed', 'signed'
+            ]);
+            $table->enum('type', ['send', 'receive']);
+            $table->bigInteger('value')->nullable();
             $table->longText('hash')->nullable();
-            $table->boolean('double_spend')->nullable();
             $table->integer('confirmations')->nullable();
-            $table->string('preference')->nullable();
-            $table->timestamp('received')->nullable();
-
+            $table->timestamp('date')->nullable();
             $table->timestamps();
         });
     }

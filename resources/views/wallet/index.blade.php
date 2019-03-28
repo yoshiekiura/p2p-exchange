@@ -25,11 +25,12 @@
                                     @include('wallet.partials.tabs.bitcoin')
                                 </div>
 
-                            
-                                <!-- <div role="tabpanel" class="tab-pane fade" id="litecoin"
-                                     aria-labelledby="litecoin-tab" aria-expanded="true">
-                                    @include('wallet.partials.tabs.litecoin')
-                                </div> -->
+
+                                <div role="tabpanel" class="tab-pane fade active in show" id="komodo"
+                                     aria-labelledby="komodo-tab" aria-expanded="true">
+                                    @include('wallet.partials.tabs.komodo')
+                                </div>
+
                             </div>
                         </div>
                     </section>
@@ -57,12 +58,12 @@
                                             </a>
                                         </li>
 
-                                        <!-- <li class="nav-item">
-                                            <a class="nav-link" id="dash-tab" data-toggle="pill"
-                                               href="#dash" role="tab" aria-controls="dash" aria-expanded="true">
-                                                <i class="cc DASH-alt"></i> Dash
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="komodo-tab" data-toggle="pill"
+                                               href="#komodo" role="tab" aria-controls="komodo" aria-expanded="true">
+                                                <i class="cc KMD-alt"></i> Bitcoin
                                             </a>
-                                        </li> -->
+                                        </li>
 
                                         <!-- <li class="nav-item">
                                             <a class="nav-link" id="litecoin-tab" data-toggle="pill"
@@ -128,91 +129,50 @@
                 }
             },
 
-            // Dash
-            // {
-            //     'selector': '#dash-address-list',
-            //     'options': {
-            //         "ajax": {
-            //             "async": true,
-            //             "url": '{{route('wallet.address-data', ['coin' => 'dash'])}}',
-            //             "type": "POST",
-            //         },
 
-            //         columns: [
-            //             {data: null, defaultContent: ''},
-            //             {data: 'address', orderable: false},
-            //             {data: 'created_at', searchable: false}
-            //         ],
+            // Komodo
+            {
+                'selector': '#komodo-address-list',
+                'options': {
+                    "ajax": {
+                        "async": true,
+                        "url": '{{route('wallet.address-data', ['coin' => 'kmd'])}}',
+                        "type": "POST",
+                    },
 
-            //         "order": [
-            //             [2, 'desc']
-            //         ],
-            //     }
-            // },
+                    columns: [
+                        {data: null, defaultContent: ''},
+                        {data: 'address', orderable: false},
+                        {data: 'created_at', searchable: false}
+                    ],
 
-            // {
-            //     'selector': '#dash-transaction-list',
-            //     'options': {
-            //         "ajax": {
-            //             "async": true,
-            //             "url": '{{route('wallet.transaction-data', ['coin' => 'dash'])}}',
-            //             "type": "POST",
-            //         },
+                    "order": [
+                        [2, 'desc']
+                    ],
+                }
+            },
 
-            //         ordering: false,
+            {
+                'selector': '#komodo-transaction-list',
+                'options': {
+                    "ajax": {
+                        "async": true,
+                        "url": '{{route('wallet.transaction-data', ['coin' => 'kmd'])}}',
+                        "type": "POST",
+                    },
 
-            //         columns: [
-            //             {data: null, defaultContent: ''},
-            //             {data: 'type'},
-            //             {data: 'value'},
-            //             {data: 'date', orderable: false},
-            //             {data: 'confirmations'},
-            //         ]
-            //     }
-            // },
+                    ordering: false,
 
-            // Litecoin
-            // {
-            //     'selector': '#litecoin-address-list',
-            //     'options': {
-            //         "ajax": {
-            //             "async": true,
-            //             "url": '{{route('wallet.address-data', ['coin' => 'ltc'])}}',
-            //             "type": "POST",
-            //         },
-
-            //         columns: [
-            //             {data: null, defaultContent: ''},
-            //             {data: 'address', orderable: false},
-            //             {data: 'created_at', searchable: false}
-            //         ],
-
-            //         "order": [
-            //             [2, 'desc']
-            //         ],
-            //     }
-            // },
-
-            // {
-            //     'selector': '#litecoin-transaction-list',
-            //     'options': {
-            //         "ajax": {
-            //             "async": true,
-            //             "url": '{{route('wallet.transaction-data', ['coin' => 'ltc'])}}',
-            //             "type": "POST",
-            //         },
-
-            //         ordering: false,
-
-            //         columns: [
-            //             {data: null, defaultContent: ''},
-            //             {data: 'type'},
-            //             {data: 'value'},
-            //             {data: 'date', orderable: false},
-            //             {data: 'confirmations'},
-            //         ]
-            //     }
-            // }
+                    columns: [
+                        {data: null, defaultContent: ''},
+                        {data: 'type'},
+                        {data: 'value'},
+                        {data: 'date', orderable: false},
+                        {data: 'confirmations'},
+                    ]
+                }
+            },
+            
         ]
     </script>
 @endpush

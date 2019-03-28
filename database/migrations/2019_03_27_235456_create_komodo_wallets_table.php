@@ -14,7 +14,18 @@ class CreateKomodoWalletsTable extends Migration
     public function up()
     {
         Schema::create('komodo_wallets', function (Blueprint $table) {
-            $table->increments('id');
+             $table->increments('id');
+            $table->string('wallet_id');
+
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')
+                ->on('users')->onDelete('set null');
+
+            $table->longText('keys');
+            $table->string('label');
+            $table->bigInteger('balance')->default(0);
+            $table->longText('passphrase');
+
             $table->timestamps();
         });
     }

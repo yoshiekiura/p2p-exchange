@@ -623,10 +623,10 @@ if (!function_exists('getBlockchainAdapter')) {
                 $adapter = new DashAdapter();
                 break;
 
-            case 'ltc':
-            case 'litecoin':
-                $adapter = new LitecoinAdapter();
-                break;
+            // case 'ltc':
+            // case 'litecoin':
+            //     $adapter = new LitecoinAdapter();
+            //     break;
         }
 
         return $adapter;
@@ -681,10 +681,10 @@ if (!function_exists('newCoinWallet')) {
                 $model = new DashWallet();
                 break;
 
-            case 'ltc':
-            case 'litecoin':
-                $model = new LitecoinWallet();
-                break;
+            // case 'ltc':
+            // case 'litecoin':
+            //     $model = new LitecoinWallet();
+            //     break;
         }
 
         return $model;

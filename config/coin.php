@@ -25,6 +25,13 @@ return [
         'symbol'              => 'Ƀ',
         'symbol_first'        => true,
     ],
+    'KMD' => [
+        'name'                => 'Komodo',
+        'precision'           => 8,
+        'subunit'             => 100000000,
+        'symbol'              => 'Ƀ',
+        'symbol_first'        => true,
+    ],
 
     // 'DASH' => [
     //     'name'                => 'Dash',
@@ -34,11 +41,11 @@ return [
     //     'symbol_first'        => true,
     // ],
 
-    'LTC' => [
-        'name'                => 'Litecoin',
-        'precision'           => 8,
-        'subunit'             => 100000000,
-        'symbol'              => 'Ł',
-        'symbol_first'        => true,
-    ],
+    // 'LTC' => [
+    //     'name'                => 'Litecoin',
+    //     'precision'           => 8,
+    //     'subunit'             => 100000000,
+    //     'symbol'              => 'Ł',
+    //     'symbol_first'        => true,
+    // ],
 ];

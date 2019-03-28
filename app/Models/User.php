@@ -288,9 +288,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->bitcoin_addresses();
                 break;
 
-            //case 'dash':
-              //  $model = $this->dash_addresses();
-                //break;
+            case 'kmd':
+            case 'komodo':
+                $model = $this->komodo_addresses();
+                break;
 
             // case 'ltc':
             // case 'litecoin':
@@ -317,9 +318,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->bitcoin_wallet();
                 break;
 
-            // case 'dash':
-            //     $model = $this->dash_wallet();
-            //     break;
+            case 'kmd':
+            case 'komodo':
+                $model = $this->komodo_wallet();
+                break;
 
             // case 'ltc':
             // case 'litecoin':
@@ -348,9 +350,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->bitcoin_transactions();
                 break;
 
-            // case 'dash':
-            //     $model = $this->dash_transactions();
-            //     break;
+            case 'kmd':
+            case 'komodo':
+                $model = $this->komodo_transactions();
+                break;
 
             // case 'ltc':
             // case 'litecoin':
@@ -479,6 +482,40 @@ class User extends Authenticatable implements CanVerifyEmailContract
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
+    public function komodo_addresses()
+    {
+        return $this->hasManyThrough(
+            'App\Models\KomodoAddress',
+            'App\Models\KomodoWallet',
+            'user_id', 'wallet_id',
+            'id', 'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function komodo_wallet()
+    {
+        return $this->hasOne('App\Models\KomodoWallet', 'user_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function komodo_transactions()
+    {
+        return $this->hasManyThrough(
+            'App\Models\KomodoTransaction',
+            'App\Models\KomodoWallet',
+            'user_id', 'wallet_id',
+            'id', 'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     // public function litecoin_addresses()
     // {
     //     return $this->hasManyThrough(
@@ -505,40 +542,6 @@ class User extends Authenticatable implements CanVerifyEmailContract
     //     return $this->hasManyThrough(
     //         'App\Models\LitecoinTransaction',
     //         'App\Models\LitecoinWallet',
-    //         'user_id', 'wallet_id',
-    //         'id', 'id'
-    //     );
-    // }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    // public function dash_addresses()
-    // {
-    //     return $this->hasManyThrough(
-    //         'App\Models\DashAddress',
-    //         'App\Models\DashWallet',
-    //         'user_id', 'wallet_id',
-    //         'id', 'id'
-    //     );
-    // }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    // public function dash_wallet()
-    // {
-    //     return $this->hasOne('App\Models\DashWallet', 'user_id', 'id');
-    // }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    // public function dash_transactions()
-    // {
-    //     return $this->hasManyThrough(
-    //         'App\Models\DashTransaction',
-    //         'App\Models\DashWallet',
     //         'user_id', 'wallet_id',
     //         'id', 'id'
     //     );

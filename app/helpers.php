@@ -652,10 +652,10 @@ if (!function_exists('getEscrowWallet')) {
                 $model = DashWallet::whereNull('user_id');
                 break;
 
-            case 'ltc':
-            case 'litecoin':
-                $model = LitecoinWallet::whereNull('user_id');
-                break;
+            // case 'ltc':
+            // case 'litecoin':
+            //     $model = LitecoinWallet::whereNull('user_id');
+            //     break;
         }
 
         return $model;

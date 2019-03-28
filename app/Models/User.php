@@ -292,10 +292,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
               //  $model = $this->dash_addresses();
                 //break;
 
-            case 'ltc':
-            case 'litecoin':
-                $model = $this->litecoin_addresses();
-                break;
+            // case 'ltc':
+            // case 'litecoin':
+            //     $model = $this->litecoin_addresses();
+            //     break;
         }
 
         return $model;
@@ -321,10 +321,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
             //     $model = $this->dash_wallet();
             //     break;
 
-            case 'ltc':
-            case 'litecoin':
-                $model = $this->litecoin_wallet();
-                break;
+            // case 'ltc':
+            // case 'litecoin':
+            //     $model = $this->litecoin_wallet();
+            //     break;
         }
 
         return $model;
@@ -352,10 +352,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
             //     $model = $this->dash_transactions();
             //     break;
 
-            case 'ltc':
-            case 'litecoin':
-                $model = $this->litecoin_transactions();
-                break;
+            // case 'ltc':
+            // case 'litecoin':
+            //     $model = $this->litecoin_transactions();
+            //     break;
         }
 
         return $model;
@@ -479,36 +479,36 @@ class User extends Authenticatable implements CanVerifyEmailContract
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function litecoin_addresses()
-    {
-        return $this->hasManyThrough(
-            'App\Models\LitecoinAddress',
-            'App\Models\LitecoinWallet',
-            'user_id', 'wallet_id',
-            'id', 'id'
-        );
-    }
+    // public function litecoin_addresses()
+    // {
+    //     return $this->hasManyThrough(
+    //         'App\Models\LitecoinAddress',
+    //         'App\Models\LitecoinWallet',
+    //         'user_id', 'wallet_id',
+    //         'id', 'id'
+    //     );
+    // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function litecoin_wallet()
-    {
-        return $this->hasOne('App\Models\LitecoinWallet', 'user_id', 'id');
-    }
+    // public function litecoin_wallet()
+    // {
+    //     return $this->hasOne('App\Models\LitecoinWallet', 'user_id', 'id');
+    // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function litecoin_transactions()
-    {
-        return $this->hasManyThrough(
-            'App\Models\LitecoinTransaction',
-            'App\Models\LitecoinWallet',
-            'user_id', 'wallet_id',
-            'id', 'id'
-        );
-    }
+    // public function litecoin_transactions()
+    // {
+    //     return $this->hasManyThrough(
+    //         'App\Models\LitecoinTransaction',
+    //         'App\Models\LitecoinWallet',
+    //         'user_id', 'wallet_id',
+    //         'id', 'id'
+    //     );
+    // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough

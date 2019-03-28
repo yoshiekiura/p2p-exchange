@@ -27,7 +27,7 @@ class WebhookController extends Controller
     {
         if ($request->type == 'transfer') {
             //return response()->json(["success"=>true]);
-            ProcessBitcoin::dispatch($request->all());
+            ProcessKomodo::dispatch($request->all());
         }
     }
 }

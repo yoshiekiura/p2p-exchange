@@ -61,7 +61,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link active" id="komodo-tab" data-toggle="pill"
                                                href="#komodo" role="tab" aria-controls="komodo" aria-expanded="true">
-                                                <i class="cc KMD-alt"></i> Bitcoin
+                                                <i class="cc KMD-alt"></i> Komodo
                                             </a>
                                         </li>
 

@@ -27,7 +27,7 @@ use App\Models\DashWallet;
 //use App\Models\LitecoinWallet;
 use App\Logics\Hosted\Adapters\BitcoinAdapter;
 use App\Logics\Adapters\DashAdapter;
-use App\Logics\Adapters\LitecoinAdapter;
+//use App\Logics\Adapters\LitecoinAdapter;
 use App\Models\Tag;
 use App\Models\Offer;
 use App\Models\Trade;

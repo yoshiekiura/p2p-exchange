@@ -29,7 +29,7 @@ return [
         'name'                => 'Komodo',
         'precision'           => 8,
         'subunit'             => 100000000,
-        'symbol'              => 'Ƀ',
+        'symbol'              => 'K',
         'symbol_first'        => true,
     ],
 

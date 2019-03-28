@@ -136,50 +136,28 @@
                         </div>
 
                         <div class="col-xl-4">
-                            <div class="card crypto-card-3 bg-gradient-x-primary">
+                            <div class="card crypto-card-3 bg-gradient-x-warning">
                                 <div class="card-content">
-                                    <div class="card-body cc DASH pb-1">
+                                    <div class="card-body cc KMD pb-1">
                                         <div class="row text-white">
                                             <div class="col-6">
-                                                <i class="cc DASH-alt font-large-1" title="DASH"></i>
+                                                <i class="cc KMD-alt font-large-1" title="KMD"></i>
                                                 <h4 class="pt-1 m-0 text-white">
-                                                    {{$escrow_wallet->get('dash')['total']}} DASH
+                                                    {{$escrow_wallet->get('kmd')['total']}} KMD
                                                 </h4>
                                             </div>
                                             <div class="col-6 text-right pl-0">
-                                                <h3 class="text-white mb-2 font-large-1">
-                                                    {{$escrow_wallet->get('dash')['price']}}
-                                                </h3>
-                                                <h4 class="text-white">Dash</h4>
+                                                <h2 class="text-white mb-2 font-large-1">
+                                                    {{$escrow_wallet->get('kmd')['price']}}
+                                                </h2>
+                                                <h4 class="text-white">Komodo</h4>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-xl-4">
-                            <div class="card crypto-card-3 bg-gradient-x-grey-blue">
-                                <div class="card-content">
-                                    <div class="card-body cc LTC pb-1">
-                                        <div class="row text-white">
-                                            <div class="col-6">
-                                                <i class="cc LTC-alt font-large-1" title="LTC"></i>
-                                                <h4 class="pt-1 m-0 text-white">
-                                                    {{$escrow_wallet->get('ltc')['total']}} LTC
-                                                </h4>
-                                            </div>
-                                            <div class="col-6 text-right pl-0">
-                                                <h3 class="text-white mb-2 font-large-1">
-                                                    {{$escrow_wallet->get('ltc')['price']}}
-                                                </h3>
-                                                <h4 class="text-white">Litecoin</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </section>
 

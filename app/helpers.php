@@ -23,10 +23,12 @@ use App\Logics\Support\CryptoCurrency;
 use App\Logics\Support\Coin;
 use App\Models\PaymentMethodCategory;
 use App\Models\BitcoinWallet;
-use App\Models\DashWallet;
+use App\Models\KomodoWallet;
+//use App\Models\DashWallet;
 //use App\Models\LitecoinWallet;
 use App\Logics\Hosted\Adapters\BitcoinAdapter;
-use App\Logics\Adapters\DashAdapter;
+use App\Logics\Hosted\Adapters\KomodoAdapter;
+//use App\Logics\Adapters\DashAdapter;
 //use App\Logics\Adapters\LitecoinAdapter;
 use App\Models\Tag;
 use App\Models\Offer;
@@ -618,15 +620,10 @@ if (!function_exists('getBlockchainAdapter')) {
                 $adapter = new BitcoinAdapter();
                 break;
 
-
-            case 'dash':
-                $adapter = new DashAdapter();
+            case 'kmd':
+            case 'komodo':
+                $adapter = new KomodoAdapter();
                 break;
-
-            // case 'ltc':
-            // case 'litecoin':
-            //     $adapter = new LitecoinAdapter();
-            //     break;
         }
 
         return $adapter;
@@ -648,8 +645,9 @@ if (!function_exists('getEscrowWallet')) {
                 $model = BitcoinWallet::whereNull('user_id');
                 break;
 
-            case 'dash':
-                $model = DashWallet::whereNull('user_id');
+            case 'kmd':
+            case 'komodo':
+                $model = KomodoWallet::whereNull('user_id');
                 break;
 
             // case 'ltc':

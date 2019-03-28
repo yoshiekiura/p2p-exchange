@@ -90,7 +90,7 @@ Route::group([], function () {
                 //Route::post('dash', 'BitGo\WebhookController@handleDash')->name('dash');
 
                 // Litecoin
-                Route::post('ltc', 'BitGo\WebhookController@handleLitecoin')->name('ltc');
+                //Route::post('ltc', 'BitGo\WebhookController@handleLitecoin')->name('ltc');
             });
         });
     });

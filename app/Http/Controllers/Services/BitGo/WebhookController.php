@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Services\BitGo;
 
 use App\Jobs\Transactions\ProcessBitcoin;
-use App\Jobs\Transactions\ProcessDash;
-use App\Jobs\Transactions\ProcessLitecoin;
+use App\Jobs\Transactions\ProcessKomodo;
 use App\Logics\Services\BlockCypher;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;

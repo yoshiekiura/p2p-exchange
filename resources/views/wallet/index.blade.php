@@ -25,12 +25,11 @@
                                     @include('wallet.partials.tabs.bitcoin')
                                 </div>
 
-                                
-
-                                <div role="tabpanel" class="tab-pane fade" id="litecoin"
+                            
+                                <!-- <div role="tabpanel" class="tab-pane fade" id="litecoin"
                                      aria-labelledby="litecoin-tab" aria-expanded="true">
                                     @include('wallet.partials.tabs.litecoin')
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </section>
@@ -65,12 +64,12 @@
                                             </a>
                                         </li> -->
 
-                                        <li class="nav-item">
+                                        <!-- <li class="nav-item">
                                             <a class="nav-link" id="litecoin-tab" data-toggle="pill"
                                                href="#litecoin" role="tab" aria-controls="litecoin" aria-expanded="true">
                                                 <i class="cc LTC-alt"></i> Litecoin
                                             </a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -173,47 +172,47 @@
             // },
 
             // Litecoin
-            {
-                'selector': '#litecoin-address-list',
-                'options': {
-                    "ajax": {
-                        "async": true,
-                        "url": '{{route('wallet.address-data', ['coin' => 'ltc'])}}',
-                        "type": "POST",
-                    },
+            // {
+            //     'selector': '#litecoin-address-list',
+            //     'options': {
+            //         "ajax": {
+            //             "async": true,
+            //             "url": '{{route('wallet.address-data', ['coin' => 'ltc'])}}',
+            //             "type": "POST",
+            //         },
 
-                    columns: [
-                        {data: null, defaultContent: ''},
-                        {data: 'address', orderable: false},
-                        {data: 'created_at', searchable: false}
-                    ],
+            //         columns: [
+            //             {data: null, defaultContent: ''},
+            //             {data: 'address', orderable: false},
+            //             {data: 'created_at', searchable: false}
+            //         ],
 
-                    "order": [
-                        [2, 'desc']
-                    ],
-                }
-            },
+            //         "order": [
+            //             [2, 'desc']
+            //         ],
+            //     }
+            // },
 
-            {
-                'selector': '#litecoin-transaction-list',
-                'options': {
-                    "ajax": {
-                        "async": true,
-                        "url": '{{route('wallet.transaction-data', ['coin' => 'ltc'])}}',
-                        "type": "POST",
-                    },
+            // {
+            //     'selector': '#litecoin-transaction-list',
+            //     'options': {
+            //         "ajax": {
+            //             "async": true,
+            //             "url": '{{route('wallet.transaction-data', ['coin' => 'ltc'])}}',
+            //             "type": "POST",
+            //         },
 
-                    ordering: false,
+            //         ordering: false,
 
-                    columns: [
-                        {data: null, defaultContent: ''},
-                        {data: 'type'},
-                        {data: 'value'},
-                        {data: 'date', orderable: false},
-                        {data: 'confirmations'},
-                    ]
-                }
-            }
+            //         columns: [
+            //             {data: null, defaultContent: ''},
+            //             {data: 'type'},
+            //             {data: 'value'},
+            //             {data: 'date', orderable: false},
+            //             {data: 'confirmations'},
+            //         ]
+            //     }
+            // }
         ]
     </script>
 @endpush

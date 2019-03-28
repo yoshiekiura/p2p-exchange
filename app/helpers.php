@@ -24,7 +24,7 @@ use App\Logics\Support\Coin;
 use App\Models\PaymentMethodCategory;
 use App\Models\BitcoinWallet;
 use App\Models\DashWallet;
-use App\Models\LitecoinWallet;
+//use App\Models\LitecoinWallet;
 use App\Logics\Hosted\Adapters\BitcoinAdapter;
 use App\Logics\Adapters\DashAdapter;
 use App\Logics\Adapters\LitecoinAdapter;

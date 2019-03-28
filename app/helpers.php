@@ -649,11 +649,6 @@ if (!function_exists('getEscrowWallet')) {
             case 'komodo':
                 $model = KomodoWallet::whereNull('user_id');
                 break;
-
-            // case 'ltc':
-            // case 'litecoin':
-            //     $model = LitecoinWallet::whereNull('user_id');
-            //     break;
         }
 
         return $model;
@@ -675,14 +670,10 @@ if (!function_exists('newCoinWallet')) {
                 $model = new BitcoinWallet();
                 break;
 
-            case 'dash':
-                $model = new DashWallet();
+            case 'kmd':
+            case 'komodo':
+                $model = new KomodoWallet();
                 break;
-
-            // case 'ltc':
-            // case 'litecoin':
-            //     $model = new LitecoinWallet();
-            //     break;
         }
 
         return $model;

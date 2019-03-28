@@ -15,24 +15,11 @@ class CreateBitcoinAddressesTable extends Migration
     {
         Schema::create('bitcoin_addresses', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('cascade');
-
-            $table->bigInteger('total_received')->default(0);
-            $table->bigInteger('balance')->default(0);
-            $table->bigInteger('total_sent')->default(0);
-
-            $table->longText('private');
-            $table->longText('wif')->nullable();
-            $table->longText('public');
             $table->longText('address');
-
-            $table->integer('trade_id')->unsigned()->nullable();
-            $table->foreign('trade_id')->references('id')
-                ->on('trades')->onDelete('cascade');
-
+            $table->string('label')->nullable();
+            $table->integer('wallet_id')->unsigned()->nullable();
+            $table->foreign('wallet_id')->references('id')
+                ->on('bitcoin_wallets')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@
 
 namespace App\Logics\Hosted\Adapters;
 
-
+use App\Logics\Hosted\Adapters\Traits\Adapter;
 use App\Logics\Services\BlockCypher;
 use App\Logics\Hosted\Exceptions\BlockchainException;
 use App\Models\BitcoinAddress;

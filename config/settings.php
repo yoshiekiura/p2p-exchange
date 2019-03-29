@@ -20,6 +20,14 @@ return [
         'min_tx_confirmations'=>3,
     ],
 
+    'kmd' => [
+        'locked_balance' => env('SET_KMD_LOCKED_BALANCE'),
+        'profit_per_wallet_limit' => env('SET_KMD_PROFIT_PER_WALLET_LIMIT', 100000000),
+        'trade_fee' => env('SET_KMD_TRADE_FEE', 1),
+        'dust_threshold' => 0.00003,
+        'min_tx_confirmations'=>3,
+    ],
+
     // 'ltc' => [
     //     'trade_fee' => env('SET_LTC_TRADE_FEE', 1),
     //     'profit_per_wallet_limit' => env('SET_LTC_PROFIT_PER_WALLET_LIMIT', 100000000),

@@ -31,9 +31,10 @@ Route::group(['namespace' => 'Resources', 'middleware' => 'authorize.public_ip']
 Route::group(['middleware' => ['basicAuth']], function() {
 
 	Route::post('webhook/btc','Services\Hosted\WebhookController@handleBitcoin');
-	Route::get('test', function(){
-		return response()->json(['foo'=>'bar']);
-	});
+    Route::post('webhook/kmd','Services\Hosted\WebhookController@handleKomodo');
+	// Route::get('test', function(){
+	// 	return response()->json(['foo'=>'bar']);
+	// });
 
 });
 

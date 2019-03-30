@@ -293,6 +293,11 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->komodo_addresses();
                 break;
 
+            case 'eth':
+            case 'ethereum':
+                $model = $this->ethereum_addresses();
+                break;
+
             // case 'ltc':
             // case 'litecoin':
             //     $model = $this->litecoin_addresses();
@@ -321,6 +326,11 @@ class User extends Authenticatable implements CanVerifyEmailContract
             case 'kmd':
             case 'komodo':
                 $model = $this->komodo_wallet();
+                break;
+
+            case 'eth':
+            case 'ethereum':
+                $model = $this->ethereum_wallet();
                 break;
 
             // case 'ltc':
@@ -353,6 +363,11 @@ class User extends Authenticatable implements CanVerifyEmailContract
             case 'kmd':
             case 'komodo':
                 $model = $this->komodo_transactions();
+                break;
+
+            case 'eth':
+            case 'ethereum':
+                $model = $this->ethereum_transactions();
                 break;
 
             // case 'ltc':
@@ -516,36 +531,36 @@ class User extends Authenticatable implements CanVerifyEmailContract
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    // public function litecoin_addresses()
-    // {
-    //     return $this->hasManyThrough(
-    //         'App\Models\LitecoinAddress',
-    //         'App\Models\LitecoinWallet',
-    //         'user_id', 'wallet_id',
-    //         'id', 'id'
-    //     );
-    // }
+    public function ethereum_addresses()
+    {
+        return $this->hasManyThrough(
+            'App\Models\EthereumAddress',
+            'App\Models\EthereumWallet',
+            'user_id', 'wallet_id',
+            'id', 'id'
+        );
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    // public function litecoin_wallet()
-    // {
-    //     return $this->hasOne('App\Models\LitecoinWallet', 'user_id', 'id');
-    // }
+    public function ethereum_wallet()
+    {
+        return $this->hasOne('App\Models\EthereumWallet', 'user_id', 'id');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    // public function litecoin_transactions()
-    // {
-    //     return $this->hasManyThrough(
-    //         'App\Models\LitecoinTransaction',
-    //         'App\Models\LitecoinWallet',
-    //         'user_id', 'wallet_id',
-    //         'id', 'id'
-    //     );
-    // }
+    public function ethereum_transactions()
+    {
+        return $this->hasManyThrough(
+            'App\Models\EthereumTransaction',
+            'App\Models\EthereumWallet',
+            'user_id', 'wallet_id',
+            'id', 'id'
+        );
+    }
 
     /**
      * Show all trades initiated by user

@@ -648,6 +648,11 @@ if (!function_exists('getEscrowWallet')) {
             case 'komodo':
                 $model = KomodoWallet::whereNull('user_id');
                 break;
+
+            case 'eth':
+            case 'ethereum':
+                $model = EthereumWallet::whereNull('user_id');
+                break;
         }
 
         return $model;
@@ -672,6 +677,11 @@ if (!function_exists('newCoinWallet')) {
             case 'kmd':
             case 'komodo':
                 $model = new KomodoWallet();
+                break;
+
+            case 'eth':
+            case 'ethereum':
+                $model = new EthereumWallet();
                 break;
         }
 

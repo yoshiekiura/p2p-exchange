@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableEthereumTransactionsTable extends Migration
+class CreateEthereumAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableEthereumTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('table_ethereum_transactions', function (Blueprint $table) {
+        Schema::create('ethereum_addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateTableEthereumTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_ethereum_transactions');
+        Schema::dropIfExists('ethereum_addresses');
     }
 }

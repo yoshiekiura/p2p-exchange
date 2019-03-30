@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableEthereumWalletsTable extends Migration
+class CreateEthereumWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableEthereumWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::create('table_ethereum_wallets', function (Blueprint $table) {
+        Schema::create('ethereum_wallets', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateTableEthereumWalletsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_ethereum_wallets');
+        Schema::dropIfExists('ethereum_wallets');
     }
 }

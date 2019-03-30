@@ -15,6 +15,11 @@ class CreateEthereumAddressesTable extends Migration
     {
         Schema::create('ethereum_addresses', function (Blueprint $table) {
             $table->increments('id');
+            $table->longText('address');
+            $table->string('label')->nullable();
+            $table->integer('wallet_id')->unsigned()->nullable();
+            $table->foreign('wallet_id')->references('id')
+                ->on('ethereum_wallets')->onDelete('cascade');
             $table->timestamps();
         });
     }

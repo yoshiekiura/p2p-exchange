@@ -145,9 +145,10 @@
                                     <li class="nav-item">
                                         <a class="nav-link" id="komodo-tab" data-toggle="pill"
                                            href="#komodo" role="tab" aria-controls="komodo" aria-expanded="false">
-                                            <i class="cc BTC"></i> Komodo
+                                            <i class="cc KMD"></i> Komodo
                                         </a>
                                     </li>
+
 
                                     <li class="pt-1"><p class="lead">{{__('Miscellaneous')}}</p></li>
 

@@ -38,6 +38,11 @@
                                     @include('admin.earnings.partials.tabs.komodo')
                                 </div>
 
+                                <div class="tab-pane fade" id="settings" role="tabpanel"
+                                     aria-labelledby="settings-tab" aria-expanded="false">
+                                    @include('admin.earnings.partials.tabs.settings')
+                                </div>
+
                             </div>
                         </div>
 

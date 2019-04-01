@@ -24,19 +24,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            {!! Form::label('SET_DASH_TRADE_FEE', __('Dash Fee'), ['class' => 'col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('SET_DASH_TRADE_FEE', $env['SET_DASH_TRADE_FEE']['value'], ['class' => 'form-control', 'required']) !!}
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            {!! Form::label('SET_LTC_TRADE_FEE', __('Litecoin Fee'), ['class' => 'col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('SET_LTC_TRADE_FEE', $env['SET_LTC_TRADE_FEE']['value'], ['class' => 'form-control', 'required']) !!}
-                            </div>
-                        </div>
                     </div>
 
                     <div class="form-actions right">

@@ -143,8 +143,8 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="komodo-tab" data-toggle="pill"
-                                           href="#komodo" role="tab" aria-controls="komodo" aria-expanded="true">
+                                        <a class="nav-link" id="komodo-tab" data-toggle="pill"
+                                           href="#komodo" role="tab" aria-controls="komodo" aria-expanded="false">
                                             <i class="cc BTC"></i> Komodo
                                         </a>
                                     </li>

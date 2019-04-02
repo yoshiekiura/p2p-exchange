@@ -542,8 +542,17 @@ if (!function_exists('get_prices')) {
                     $prices, json_decode($response->getBody(), true)
                 );
             });
+            $new_data = [];
+            $adder = (int) config()->get('settings.'.strtolower($coin).'.market_price_percent', 1);
+            foreach ($data as $key => $value) {
+                foreach ($value as $key1 => $value1) {
+                    $new_value = ($value1/100)*$adder;
+                    $new_value = $value1 + $new_value;
+                    $new_data[$key][$key1] = $new_value;
+                }
+            }
 
-            return $prices;
+            return $new_data;
         });
     }
 }
@@ -561,9 +570,6 @@ if (!function_exists('get_price')) {
         $multiplier = get_prices()[strtoupper($coin)][strtoupper($currency)];
 
         $price = $amount * $multiplier;
-        $adder = (int) config()->get('settings.'.strtolower($coin).'.market_price_percent', 1);
-        $adder = ($price/100)*$adder;
-        $price = $price+$adder;
 
         return ($format) ? money($price, $currency, true) : $price;
     }

@@ -545,7 +545,7 @@ if (!function_exists('get_prices')) {
             $new_data = [];
             foreach ($prices as $key => $value) {
                 foreach ($value as $key1 => $value1) {
-                    $adder = (int) config()->get('settings.'.($key).'.market_price_percent');
+                    $adder = (int) config()->get('settings.'.strtolower($key).'.market_price_percent');
                     echo $adder;
                     $new_value = ($value1/100)*$adder;
                     $new_value = $value1 + $new_value;

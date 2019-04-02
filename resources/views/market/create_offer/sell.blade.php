@@ -255,5 +255,6 @@
                 'coins' => get_coins(),
                 'coin_prices' => get_prices(),
             ]) !!}
+        console.log(get_prices());
     </script>
 @endpush

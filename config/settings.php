@@ -16,6 +16,7 @@ return [
         'locked_balance' => env('SET_BTC_LOCKED_BALANCE'),
         'profit_per_wallet_limit' => env('SET_BTC_PROFIT_PER_WALLET_LIMIT', 100000000),
         'trade_fee' => env('SET_BTC_TRADE_FEE', 1),
+        'market_price_percent' => env('SET_BTC_MARKET_CENT', 0)
         'dust_threshold' => 0.00003,
         'min_tx_confirmations'=>3,
     ],

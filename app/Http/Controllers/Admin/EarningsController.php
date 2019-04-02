@@ -237,6 +237,10 @@ class EarningsController extends Controller
                 'rules' => 'required|numeric|min:0',
             ],
 
+            'SET_BTC_MARKET_CENT' => [
+                'rules' => 'required|numeric|min:0',
+            ],
+
             'SET_LTC_TRADE_FEE' => [
                 'rules' => 'required|numeric|min:0',
             ],

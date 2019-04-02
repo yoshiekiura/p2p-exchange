@@ -561,6 +561,9 @@ if (!function_exists('get_price')) {
         $multiplier = get_prices()[strtoupper($coin)][strtoupper($currency)];
 
         $price = $amount * $multiplier;
+        $adder = (int) config()->get('settings.'.strtolower($coin).'.market_price_percent', 1);
+        $adder = ($price/100)*$adder;
+        $price = $price+$adder;
 
         return ($format) ? money($price, $currency, true) : $price;
     }

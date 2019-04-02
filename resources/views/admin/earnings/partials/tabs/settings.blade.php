@@ -24,6 +24,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            {!! Form::label('SET_KMD_TRADE_FEE', __('Komodo Fee'), ['class' => 'col-md-3']) !!}
+                            <div class="col-md-9">
+                                {!! Form::text('SET_KMD_TRADE_FEE', $env['SET_KMD_TRADE_FEE']['value'], ['class' => 'form-control', 'required']) !!}
+                            </div>
+                        </div>
+
                         <div class="bs-callout-success callout-transparent callout-border-left mb-2 p-1">
                             <p class="card-text">
                                 {{__('Set the percentage to alter the market price')}}

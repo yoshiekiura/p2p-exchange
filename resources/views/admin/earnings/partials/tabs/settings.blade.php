@@ -44,6 +44,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            {!! Form::label('SET_KMD_MARKET_CENT', __('Komodo MarketPrice %'), ['class' => 'col-md-3']) !!}
+                            <div class="col-md-9">
+                                {!! Form::text('SET_KMD_MARKET_CENT', $env['SET_KMD_MARKET_CENT']['value'], ['class' => 'form-control', 'required']) !!}
+                            </div>
+                        </div>
+
 
                     </div>
 

@@ -38,11 +38,15 @@
                                     @include('admin.earnings.partials.tabs.komodo')
                                 </div>
 
+                                <div role="tabpanel" class="tab-pane fade" id="ethereum"
+                                     aria-labelledby="ethereum-tab" aria-expanded="false">
+                                    @include('admin.earnings.partials.tabs.ethereum')
+                                </div>
+
                                 <div class="tab-pane fade" id="settings" role="tabpanel"
                                      aria-labelledby="settings-tab" aria-expanded="false">
                                     @include('admin.earnings.partials.tabs.settings')
                                 </div>
-
                             </div>
                         </div>
 
@@ -154,6 +158,13 @@
                                         </a>
                                     </li>
 
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="ethereum-tab" data-toggle="pill"
+                                           href="#ethereum" role="tab" aria-controls="ethereum" aria-expanded="false">
+                                            <i class="cc ETH"></i> Ethereum
+                                        </a>
+                                    </li>
+
 
                                     <li class="pt-1"><p class="lead">{{__('Miscellaneous')}}</p></li>
 
@@ -200,6 +211,27 @@
             },
 
             // Komodo Wallets
+            {
+                'selector': '#komodo-wallets',
+                'options': {
+                    "ajax": {
+                        "async": true,
+                        "url": '{{route('admin.earnings.data', ['coin' => 'komodo'])}}',
+                        "type": "POST",
+                    },
+
+                    searching: false,
+
+                    columns: [
+                        {data: null, defaultContent: ''},
+                        {data: 'address', searchable: false},
+                        {data: 'balance', searchable: false},
+                        {data: 'action', orderable: false, searchable: false},
+                    ]
+                }
+            },
+
+            // Ethereum Wallets
             {
                 'selector': '#komodo-wallets',
                 'options': {

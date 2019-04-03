@@ -158,6 +158,28 @@
                             </div>
                         </div>
 
+                        <div class="col-xl-4">
+                            <div class="card crypto-card-3 bg-primary">
+                                <div class="card-content">
+                                    <div class="card-body cc ETH pb-1">
+                                        <div class="row text-white">
+                                            <div class="col-6">
+                                                <i class="cc ETH-alt font-large-1" title="ETH"></i>
+                                                <h4 class="pt-1 m-0 text-white">
+                                                    {{$escrow_wallet->get('eth')['total']}} ETH
+                                                </h4>
+                                            </div>
+                                            <div class="col-6 text-right pl-0">
+                                                <h2 class="text-white mb-2 font-large-1">
+                                                    {{$escrow_wallet->get('eth')['price']}}
+                                                </h2>
+                                                <h4 class="text-white">Ethereum</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
                     </div>
                 </section>

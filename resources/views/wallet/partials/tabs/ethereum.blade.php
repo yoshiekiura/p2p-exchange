@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-6">
                     <h4 class="text-white mb-3">
-                        <i class="cc ETH" title="ETH"></i> Komodo
+                        <i class="cc ETH" title="ETH"></i> Ethereum
                     </h4>
                 </div>
                 <div class="col-6 text-right">
@@ -37,19 +37,19 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active text-bold-600" id="komdo-address-tab" aria-expanded="true"
-                       href="#komodo-address" aria-controls="komodo-address" data-toggle="tab">
+                       href="#ethereum-address" aria-controls="ethereum-address" data-toggle="tab">
                         <i class="ft-hash"></i> {{__('ADDRESSES')}}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-bold-600" id="komodo-transaction-tab" href="#komodo-transaction"
-                       aria-controls="komodo-transaction" aria-expanded="false" data-toggle="tab">
+                    <a class="nav-link text-bold-600" id="ethereum-transaction-tab" href="#ethereum-transaction"
+                       aria-controls="ethereum-transaction" aria-expanded="false" data-toggle="tab">
                         <i class="ft-activity"></i> {{__('TRANSACTION')}}</a>
                 </li>
             </ul>
             <div class="tab-content px-1 pt-1">
-                <div role="tabpanel" class="tab-pane active" id="komodo-address"
-                     aria-labelledby="komodo-address-tab" aria-expanded="true">
+                <div role="tabpanel" class="tab-pane active" id="ethereum-address"
+                     aria-labelledby="ethereum-address-tab" aria-expanded="true">
 
                     @if(Auth::user()->wallet('eth')->latestAddress())
                         <div class="row">
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-sm-6 py-4 text-center">
                                 <div class="card-text size-2x text-uppercase">
-                                    {{__('Your komodo deposit address is below:')}}
+                                    {{__('Your ethereum deposit address is below:')}}
                                 </div>
                                 <div class="card-text text-center pt-1">
                                     <h2><b>{{Auth::user()->wallet('eth')->latestAddress()}}</b></h2>
@@ -66,19 +66,19 @@
 
                                 <div class="card-text text-center pt-1">
                                     <button type="button" class="btn mr-1 mb-1 btn-success"
-                                            data-toggle="modal" data-target="#send-komodo">
+                                            data-toggle="modal" data-target="#send-ethereum">
                                         <i class="la la-send"></i> {{__('SEND')}}
                                     </button>
                                 </div>
 
-                                <div class="modal fade text-left" id="send-komodo" tabindex="-1" role="dialog" aria-labelledby="send-komodo-label"
+                                <div class="modal fade text-left" id="send-ethereum" tabindex="-1" role="dialog" aria-labelledby="send-ethereum-label"
                                      aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         {!! Form::open(['url' => route('wallet.send', ['coin' => 'eth']), 'class' => 'form form-horizontal', 'method' => 'POST']) !!}
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="send-komodo-label">
-                                                    <i class="la la-send"></i> {{__('Send')}} Komodo</h4>
+                                                <h4 class="modal-title" id="send-ethereum-label">
+                                                    <i class="la la-send"></i> {{__('Send')}} Ethereum</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -146,7 +146,7 @@
 
                         <div class="row pt-1">
                             <div class="table-responsive">
-                                <table id="komodo-address-list" class="table table-white-space table-bordered row-grouping display icheck table-middle">
+                                <table id="ethereum-address-list" class="table table-white-space table-bordered row-grouping display icheck table-middle">
                                     <thead>
                                     <tr>
                                         <th></th>
@@ -182,8 +182,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="tab-pane" id="komodo-transaction" role="tabpanel"
-                     aria-labelledby="komodo-transaction-tab" aria-expanded="false">
+                <div class="tab-pane" id="ethereum-transaction" role="tabpanel"
+                     aria-labelledby="ethereum-transaction-tab" aria-expanded="false">
                     <div class="card-text">
                         <h5 class="text-center">
                             {{__('A minimum of :n confirmations is required before your balance is credited on incoming transaction.', ['n' => config('settings.min_tx_confirmations')])}}
@@ -191,7 +191,7 @@
                     </div>
                     <div class="row pt-1">
                         <div class="table-responsive">
-                            <table id="komodo-transaction-list" class="table table-white-space table-bordered row-grouping display icheck table-middle">
+                            <table id="ethereum-transaction-list" class="table table-white-space table-bordered row-grouping display icheck table-middle">
                                 <thead>
                                 <tr>
                                     <th></th>

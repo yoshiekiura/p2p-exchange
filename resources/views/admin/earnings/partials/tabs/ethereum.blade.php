@@ -1,26 +1,26 @@
 <div class="card crypto-card-3">
     <div class="card-content">
-        <div class="card-body bg-primary cc DASH pb-1">
+        <div class="card-body bg-warning cc KMD pb-1">
             <div class="row text-white">
                 <div class="col-6">
-                    <i class="cc DASH-alt font-large-1" title="DASH"></i>
+                    <i class="cc KMD-alt font-large-1" title="KMD"></i>
                     <h4 class="pt-1 m-0 text-white">
-                        {{$escrow_wallet->get('dash')['total']}} DASH
+                        {{$escrow_wallet->get('kmd')['total']}} KMD
                     </h4>
                 </div>
                 <div class="col-6 text-right pl-0">
                     <h2 class="text-white mb-2 font-large-1">
-                        {{$escrow_wallet->get('dash')['price']}}
+                        {{$escrow_wallet->get('kmd')['price']}}
                     </h2>
-                    <h4 class="text-white">Dash</h4>
+                    <h4 class="text-white">Komodo</h4>
                 </div>
             </div>
         </div>
 
         <div class="card-body">
-            @if(getEscrowWallet('dash')->count())
+            @if(getEscrowWallet('kmd')->count())
                 <div class="table-responsive my-1">
-                    <table id="dash-wallets" class="table table-borderless table-striped row-grouping display icheck table-middle">
+                    <table id="komodo-wallets" class="table table-borderless table-striped row-grouping display icheck table-middle">
                         <thead>
                         <tr>
                             <th></th>

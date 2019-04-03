@@ -177,7 +177,50 @@
                     ]
                 }
             },
-            
+
+
+            // Ethereum
+            {
+                'selector': '#ethereum-address-list',
+                'options': {
+                    "ajax": {
+                        "async": true,
+                        "url": '{{route('wallet.address-data', ['coin' => 'eth'])}}',
+                        "type": "POST",
+                    },
+
+                    columns: [
+                        {data: null, defaultContent: ''},
+                        {data: 'address', orderable: false},
+                        {data: 'created_at', searchable: false}
+                    ],
+
+                    "order": [
+                        [2, 'desc']
+                    ],
+                }
+            },
+
+            {
+                'selector': '#ethereum-transaction-list',
+                'options': {
+                    "ajax": {
+                        "async": true,
+                        "url": '{{route('wallet.transaction-data', ['coin' => 'eth'])}}',
+                        "type": "POST",
+                    },
+
+                    ordering: false,
+
+                    columns: [
+                        {data: null, defaultContent: ''},
+                        {data: 'type'},
+                        {data: 'value'},
+                        {data: 'date', orderable: false},
+                        {data: 'confirmations'},
+                    ]
+                }
+            },            
         ]
     </script>
 @endpush

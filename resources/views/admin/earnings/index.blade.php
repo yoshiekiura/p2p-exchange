@@ -233,11 +233,11 @@
 
             // Ethereum Wallets
             {
-                'selector': '#komodo-wallets',
+                'selector': '#ethereum-wallets',
                 'options': {
                     "ajax": {
                         "async": true,
-                        "url": '{{route('admin.earnings.data', ['coin' => 'komodo'])}}',
+                        "url": '{{route('admin.earnings.data', ['coin' => 'ethereum'])}}',
                         "type": "POST",
                     },
 

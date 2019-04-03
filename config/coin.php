@@ -32,6 +32,13 @@ return [
         'symbol'              => 'K',
         'symbol_first'        => true,
     ],
+    'ETH' => [
+        'name'                => 'Ethereum',
+        'precision'           => 18,
+        'subunit'             => 1000000000000000000,
+        'symbol'              => 'Ξ',
+        'symbol_first'        => true,
+    ],
 
     // 'DASH' => [
     //     'name'                => 'Dash',

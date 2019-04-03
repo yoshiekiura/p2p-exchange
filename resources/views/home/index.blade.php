@@ -67,7 +67,7 @@
 
                     <!--Komodo-->
                     <div class="col-xl-4 col-lg-6 col-12">
-                        <div class="card crypto-card-3 bg-primary">
+                        <div class="card crypto-card-3 bg-secondary">
                             <div class="card-content">
                                 <div class="card-body cc KMD pb-1">
                                     <div class="row">

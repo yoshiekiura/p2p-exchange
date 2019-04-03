@@ -31,6 +31,11 @@
                                     @include('wallet.partials.tabs.komodo')
                                 </div>
 
+
+                                <div role="tabpanel" class="tab-pane fade" id="ethereum"
+                                     aria-labelledby="ethereum-tab" aria-expanded="true">
+                                    @include('wallet.partials.tabs.ethereum')
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -65,6 +70,12 @@
                                             </a>
                                         </li>
 
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="ethereum-tab" data-toggle="pill"
+                                               href="#ethereum" role="tab" aria-controls="ethereum" aria-expanded="true">
+                                                <i class="cc ETH-alt"></i> Ethereum
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

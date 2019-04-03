@@ -1,6 +1,6 @@
 <div class="card crypto-card-3">
     <div class="card-content">
-        <div class="card-body bg-warning cc ETH pb-1">
+        <div class="card-body bg-primary cc ETH pb-1">
             <div class="row text-white">
                 <div class="col-6">
                     <i class="cc ETH-alt font-large-1" title="ETH"></i>

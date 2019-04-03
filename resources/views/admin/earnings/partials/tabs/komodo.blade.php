@@ -1,6 +1,6 @@
 <div class="card crypto-card-3">
     <div class="card-content">
-        <div class="card-body bg-warning cc KMD pb-1">
+        <div class="card-body bg-secondary cc KMD pb-1">
             <div class="row text-white">
                 <div class="col-6">
                     <i class="cc KMD-alt font-large-1" title="KMD"></i>

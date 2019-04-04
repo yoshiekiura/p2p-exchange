@@ -97,7 +97,8 @@ class ProcessKomodo implements ShouldQueue
                         }
                     }
                     elseif($confirmations >= $min_confirmations){
-                       if ($user = $wallet->user) {
+                        $wallet->update(['balance' => $this->data['balance']]);
+                        if ($user = $wallet->user) {
                             $user->notify(new IncomingConfirmed('kmd', $this->data['value']));
                         } 
                     }

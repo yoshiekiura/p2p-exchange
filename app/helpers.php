@@ -68,6 +68,7 @@ if (!function_exists('getAvailableLocales')) {
             'ja' => 'Japanese',
             'ru' => 'Russian',
             'fr' => 'French',
+            'ko' => 'Korean',
         ];
     }
 }

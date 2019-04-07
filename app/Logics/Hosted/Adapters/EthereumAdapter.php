@@ -196,12 +196,12 @@ class EthereumAdapter
     public function updateOutputBalance($output, $amount = 0)
     {
         if (!is_array($output)) {
-            $address = BitcoinAddress::where('address', $output);
+            $address = EthereumAddress::where('address', $output);
 
             $address->first()->wallet->increment('balance', $amount);
         } else {
             foreach ($output as $out) {
-                $address = BitcoinAddress::where('address', $out['address']);
+                $address = EthereumAddress::where('address', $out['address']);
 
                 $address->first()->wallet->increment('balance', $out['amount']);
             }
@@ -234,7 +234,7 @@ class EthereumAdapter
             URL::forceRootUrl(config('app.url'));
         }
 
-        $webhook = route('bitgo.hook.btc');
+        $webhook = route('bitgo.hook.eth');
 
         //TODO: Test Purpose. Please Remove before production
         if (app()->environment() === 'local') {

@@ -111,7 +111,7 @@ class RegisterController extends Controller
 
         $user->assignRole('user');
 
-        //resolve('Lunaweb\EmailVerification\EmailVerification')->sendVerifyLink($user);
+        resolve('Lunaweb\EmailVerification\EmailVerification')->sendVerifyLink($user);
 
         //$user->notify(new UserRegistered());
 

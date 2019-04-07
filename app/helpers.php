@@ -28,7 +28,7 @@ use App\Models\EthereumWallet;
 //use App\Models\LitecoinWallet;
 use App\Logics\Hosted\Adapters\BitcoinAdapter;
 use App\Logics\Hosted\Adapters\KomodoAdapter;
-//use App\Logics\Adapters\LitecoinAdapter;
+use App\Logics\Hosted\Adapters\EthereumAdapter;
 use App\Models\Tag;
 use App\Models\Offer;
 use App\Models\Trade;
@@ -632,6 +632,11 @@ if (!function_exists('getBlockchainAdapter')) {
             case 'kmd':
             case 'komodo':
                 $adapter = new KomodoAdapter();
+                break;
+
+            case 'eth':
+            case 'ethereum':
+                $adapter = new EthereumAdapter();
                 break;
         }
 

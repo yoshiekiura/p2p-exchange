@@ -13,16 +13,16 @@ namespace App\Logics\Hosted\Adapters;
 use App\Logics\Hosted\Adapters\Traits\Adapter;
 use App\Logics\Services\BlockCypher;
 use App\Logics\Hosted\Exceptions\BlockchainException;
-use App\Models\BitcoinAddress;
-use App\Models\BitcoinTransaction;
-use App\Models\BitcoinWallet;
+use App\Models\EthereumAddress;
+use App\Models\EthereumTransaction;
+use App\Models\EthereumWallet;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
 use Curl\Curl;
 
-class BitcoinAdapter
+class EthereumAdapter
 {
     /**
      * Default wallet name
@@ -71,7 +71,7 @@ class BitcoinAdapter
         $generate_wallet = new Curl();
         $generate_wallet->setHeader("Authorization",$this->accesstoken);
         $api_url = $this->api_url;
-        $generate_wallet->post($api_url.'createWallet',array('type'=>1,'coin'=>'BTC','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
+        $generate_wallet->post($api_url.'createWallet',array('type'=>1,'coin'=>'ETH','userid'=>$userid,'username'=>$username,'passphrase'=>$passphrase));
         if($generate_wallet->errorMessage){
             throw new BlockchainException(__('Unable to generate wallet'));
             //throw new BlockchainException(__(json_encode($generate_wallet->response)));
@@ -95,7 +95,7 @@ class BitcoinAdapter
         $generate_wallet = new Curl();
         $generate_wallet->setHeader("Authorization",$this->accesstoken);
         $api_url = $this->api_url;
-        $generate_wallet->post($api_url.'createWallet',array('type'=>2,'coin'=>'BTC','passphrase'=>$passphrase));
+        $generate_wallet->post($api_url.'createWallet',array('type'=>2,'coin'=>'ETH','passphrase'=>$passphrase));
         if($generate_wallet->errorMessage){
             throw new BlockchainException(__('Unable to generate wallet'));
             //throw new BlockchainException(__(json_encode($generate_wallet->response)));
@@ -122,7 +122,7 @@ class BitcoinAdapter
         $send_multiple = new Curl();
         $send_multiple->setHeader("Authorization",$this->accesstoken);
         $api_url = $this->api_url;
-        $send_multiple->post($api_url.'transaction',array('coin'=>'BTC','userid'=>$wallet->user_id,'wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,'addresses'=>$addresses,'amounts' =>$amounts));
+        $send_multiple->post($api_url.'transaction',array('coin'=>'ETH','userid'=>$wallet->user_id,'wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,'addresses'=>$addresses,'amounts' =>$amounts));
         if($send_multiple->errorMessage){
             throw new BlockchainException(__('Unable to connect to blockchain network!'));
             //throw new BlockchainException(__(json_encode($send_multiple->response)));
@@ -153,7 +153,7 @@ class BitcoinAdapter
             $send_tx = new Curl();
             $send_tx->setHeader("Authorization",$this->accesstoken);
             $api_url = $this->api_url;
-            $send_tx->post($api_url.'withdraw',array('coin'=>'BTC','userid'=>$wallet->user_id,'wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,'address'=>$output,'amount'=>$amount));
+            $send_tx->post($api_url.'withdraw',array('coin'=>'ETH','userid'=>$wallet->user_id,'wallet_id'=>$wallet->wallet_id,'wallet_key'=>$wallet->passphrase,'address'=>$output,'amount'=>$amount));
             if($send_tx->errorMessage){
                 //throw new BlockchainException(__('Unable to generate wallet'));
                 throw new BlockchainException(__(json_encode($send_tx->response)));

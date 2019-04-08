@@ -70,10 +70,10 @@ class ProcessEthereum implements ShouldQueue
                 if ($transaction) {
                     if ($confirmations >= $min_confirmations) {
                         if ($user = $wallet->user) {
-                            $user->notify(new IncomingConfirmed('eth', $this->data['value']));
+                            $user->notify(new IncomingConfirmed('eth', number_format($this->data['value'],0,'','')));
                         }
 
-                        $wallet->update(['balance' => $this->data['balance']]);
+                        $wallet->update(['balance' => number_format($this->data['balance'],0,'','')]);
                         $transaction->update([
                             'confirmations' => $confirmations,
                             'state'         => $this->data['state'],
@@ -88,18 +88,18 @@ class ProcessEthereum implements ShouldQueue
                         'transaction_id' => $this->data['id'],
                         'state'          => $this->data['state'],
                         'date'           => Carbon::parse(date("F j, Y, g:i a")),
-                        'value'          => $this->data['value'],
+                        'value'          => number_format($this->data['value'],0,'',''),
                     ]);
 
                     if ($confirmations < $min_confirmations) {
                         if ($user = $wallet->user) {
-                            $user->notify(new IncomingUnconfirmed('eth', $this->data['value']));
+                            $user->notify(new IncomingUnconfirmed('eth', number_format($this->data['value'],0,'','')));
                         }
                     }
                     elseif($confirmations >= $min_confirmations){
-                        $wallet->update(['balance' => $this->data['balance']]);
+                        $wallet->update(['balance' => number_format($this->data['balance'],0,'','')]);
                         if ($user = $wallet->user) {
-                            $user->notify(new IncomingConfirmed('eth', $this->data['value']));
+                            $user->notify(new IncomingConfirmed('eth', number_format($this->data['value'],0,'','')));
                         } 
                     }
                 }

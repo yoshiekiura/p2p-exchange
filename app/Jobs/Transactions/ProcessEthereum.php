@@ -56,10 +56,10 @@ class ProcessEthereum implements ShouldQueue
      */
     
 
-    public function handle(KomodoAdapter $adapter)
+    public function handle(EthereumAdapter $adapter)
     {
         if(isset($this->data['wallet_id'],$this->data['tx_type'],$this->data['confirmations'],$this->data['hash'],$this->data['value'],$this->data['id'],$this->data['state'],$this->data['balance']) && is_int($this->data['confirmations']) && is_int($this->data['balance']) && $this->data['tx_type'] == "receive"){
-            $wallet = KomodoWallet::where('wallet_id', $this->data['wallet_id'])->first();
+            $wallet = EthereumWallet::where('wallet_id', $this->data['wallet_id'])->first();
             if (!$wallet){
                 return;
             }

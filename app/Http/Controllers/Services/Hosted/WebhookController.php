@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Services\Hosted;
 
 use App\Jobs\Transactions\ProcessBitcoin;
 use App\Jobs\Transactions\ProcessKomodo;
+use App\Jobs\Transactions\ProcessEthereum;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
@@ -28,6 +29,14 @@ class WebhookController extends Controller
         if ($request->type == 'transfer') {
             //return response()->json(["success"=>true]);
             ProcessKomodo::dispatch($request->all());
+        }
+    }
+
+    public function handleEthereum(Request $request)
+    {
+        if ($request->type == 'transfer') {
+            //return response()->json(["success"=>true]);
+            ProcessEthereum::dispatch($request->all());
         }
     }
 }

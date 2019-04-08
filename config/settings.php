@@ -17,7 +17,7 @@ return [
         'profit_per_wallet_limit' => env('SET_BTC_PROFIT_PER_WALLET_LIMIT', 100000000),
         'trade_fee' => env('SET_BTC_TRADE_FEE', 1),
         'market_price_percent' => env('SET_BTC_MARKET_CENT'),
-        'dust_threshold' => 0.00003,
+        'dust_threshold' => 0.00002,
         'min_tx_confirmations'=>3,
     ],
 
@@ -26,8 +26,16 @@ return [
         'profit_per_wallet_limit' => env('SET_KMD_PROFIT_PER_WALLET_LIMIT', 100000000),
         'trade_fee' => env('SET_KMD_TRADE_FEE', 1),
         'market_price_percent' => env('SET_KMD_MARKET_CENT', 0),
-        'dust_threshold' => 0.00003,
+        'dust_threshold' => 0.00002,
         'min_tx_confirmations'=>3,
+    ],
+    'eth' => [
+        'locked_balance' => env('SET_ETH_LOCKED_BALANCE'),
+        'profit_per_wallet_limit' => env('SET_ETH_PROFIT_PER_WALLET_LIMIT', 1000000000000000000),
+        'trade_fee' => env('SET_ETH_TRADE_FEE', 1),
+        'market_price_percent' => env('SET_ETH_MARKET_CENT', 0),
+        'dust_threshold' => 0.00002,
+        'min_tx_confirmations'=>10,
     ],
 
     // 'ltc' => [

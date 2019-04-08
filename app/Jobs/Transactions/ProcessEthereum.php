@@ -66,7 +66,7 @@ class ProcessEthereum implements ShouldQueue
             else{
                 $confirmations = (int) $this->data['confirmations'];
                 $transaction = $wallet->transactions()->where('hash', $this->data['hash'])->first();
-                $min_confirmations = (int) $this->settings['kmd']['min_tx_confirmations'];
+                $min_confirmations = (int) $this->settings['eth']['min_tx_confirmations'];
                 if ($transaction) {
                     if ($confirmations >= $min_confirmations) {
                         if ($user = $wallet->user) {

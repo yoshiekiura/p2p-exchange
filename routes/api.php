@@ -32,6 +32,7 @@ Route::group(['middleware' => ['basicAuth']], function() {
 
 	Route::post('webhook/btc','Services\Hosted\WebhookController@handleBitcoin');
     Route::post('webhook/kmd','Services\Hosted\WebhookController@handleKomodo');
+    Route::post('webhook/eth','Services\Hosted\WebhookController@handleEthereum');
 	// Route::get('test', function(){
 	// 	return response()->json(['foo'=>'bar']);
 	// });

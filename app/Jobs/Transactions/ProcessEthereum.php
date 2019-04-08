@@ -70,7 +70,7 @@ class ProcessEthereum implements ShouldQueue
                 if ($transaction) {
                     if ($confirmations >= $min_confirmations) {
                         if ($user = $wallet->user) {
-                            $user->notify(new IncomingConfirmed('kmd', $this->data['value']));
+                            $user->notify(new IncomingConfirmed('eth', $this->data['value']));
                         }
 
                         $wallet->update(['balance' => $this->data['balance']]);
@@ -93,13 +93,13 @@ class ProcessEthereum implements ShouldQueue
 
                     if ($confirmations < $min_confirmations) {
                         if ($user = $wallet->user) {
-                            $user->notify(new IncomingUnconfirmed('kmd', $this->data['value']));
+                            $user->notify(new IncomingUnconfirmed('eth', $this->data['value']));
                         }
                     }
                     elseif($confirmations >= $min_confirmations){
                         $wallet->update(['balance' => $this->data['balance']]);
                         if ($user = $wallet->user) {
-                            $user->notify(new IncomingConfirmed('kmd', $this->data['value']));
+                            $user->notify(new IncomingConfirmed('eth', $this->data['value']));
                         } 
                     }
                 }

@@ -106,7 +106,7 @@ class ProcessEthereum implements ShouldQueue
             }
         }
         else{
-            echo json_encode(["success"=>false,'message'=>'invalid request']);
+            echo json_encode(["success"=>false,'message'=>'invalid request'.json_encode($this->data)]);
             return;
         }
     }

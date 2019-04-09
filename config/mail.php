@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.office365.com'),
+    'host' => env('MAIL_HOST', 'smtp-mail.outlook.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'STARTTLS'),
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
 
     'username' => env('help@coinp2p.io'),
 
-    'password' => env('JldDubai1!~'),
+    'password' => env('wW_NS:.LRjwMQ75'),
 
     /*
     |--------------------------------------------------------------------------

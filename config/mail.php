@@ -70,8 +70,15 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-
-    'encryption' => env('MAIL_ENCRYPTION', 'starttls'),
+    'stream' => [
+    'ssl' => [
+        'allow_self_signed' => true,
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+    ],
+],
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -100,13 +107,7 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
-    'stream' => [
-    'ssl' => [
-        'allow_self_signed' => true,
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-    ],
-],
+    
 
     /*
     |--------------------------------------------------------------------------

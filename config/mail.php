@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp-mail.outlook.com'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'help@coinp2p.io'),
+        'address' => env('MAIL_FROM_ADDRESS', 'affankhan627@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'CoinP2P'),
     ],
 
@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'username' => env('help@coinp2p.io'),
+    'username' => env('affankhan627@gmail.com'),
 
     'password' => env('wW_NS:.LRjwMQ75'),
 

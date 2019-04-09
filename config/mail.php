@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'sendmail'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -70,7 +70,7 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-    'encryption' => env('MAIL_ENCRYPTION', 'starttls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
 
     /*

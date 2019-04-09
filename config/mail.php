@@ -77,8 +77,8 @@ return [
         'verify_peer_name' => false,
     ],
 ],
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-    
+    'encryption' => env('MAIL_ENCRYPTION', 'starttls'),
+
 
     /*
     |--------------------------------------------------------------------------

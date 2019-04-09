@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'sendmail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.zoho.com'),
+    'host' => env('MAIL_HOST', 'smtp-mail.outlook.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 465),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'admin@bitcoinpk.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'help@coinp2p.io'),
         'name' => env('MAIL_FROM_NAME', 'CoinP2P'),
     ],
 
@@ -70,14 +70,7 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-    'stream' => [
-    'ssl' => [
-        'allow_self_signed' => true,
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-    ],
-],
-    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+    'encryption' => env('MAIL_ENCRYPTION', 'starttls'),
 
 
     /*
@@ -91,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('admin@bitcoinpk.com'),
+    'username' => env('help@coinp2p.io'),
 
-    'password' => env('patakha1234'),
+    'password' => env('wW_NS:.LRjwMQ75'),
 
     /*
     |--------------------------------------------------------------------------

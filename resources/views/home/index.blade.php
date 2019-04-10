@@ -157,7 +157,7 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <h4 class="text-white mb-3">
-                                                <i class="cc XRP" title="XRP"></i> Ethereum
+                                                <i class="cc XRP" title="XRP"></i> Ripple
                                             </h4>
                                         </div>
                                         <div class="col-6 text-right">

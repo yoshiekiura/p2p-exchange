@@ -36,6 +36,12 @@
                                      aria-labelledby="ethereum-tab" aria-expanded="true">
                                     @include('wallet.partials.tabs.ethereum')
                                 </div>
+
+
+                                <div role="tabpanel" class="tab-pane fade" id="ripple"
+                                     aria-labelledby="ripple-tab" aria-expanded="true">
+                                    @include('wallet.partials.tabs.ripple')
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -74,6 +80,13 @@
                                             <a class="nav-link" id="ethereum-tab" data-toggle="pill"
                                                href="#ethereum" role="tab" aria-controls="ethereum" aria-expanded="true">
                                                 <i class="cc ETH-alt"></i> Ethereum
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="ripple-tab" data-toggle="pill"
+                                               href="#ripple" role="tab" aria-controls="ripple" aria-expanded="true">
+                                                <i class="cc XRP-alt"></i> Ripple
                                             </a>
                                         </li>
                                     </ul>
@@ -207,6 +220,50 @@
                     "ajax": {
                         "async": true,
                         "url": '{{route('wallet.transaction-data', ['coin' => 'eth'])}}',
+                        "type": "POST",
+                    },
+
+                    ordering: false,
+
+                    columns: [
+                        {data: null, defaultContent: ''},
+                        {data: 'type'},
+                        {data: 'value'},
+                        {data: 'date', orderable: false},
+                        {data: 'confirmations'},
+                    ]
+                }
+            }, 
+
+
+            // Ripple
+            {
+                'selector': '#ripple-address-list',
+                'options': {
+                    "ajax": {
+                        "async": true,
+                        "url": '{{route('wallet.address-data', ['coin' => 'xrp'])}}',
+                        "type": "POST",
+                    },
+
+                    columns: [
+                        {data: null, defaultContent: ''},
+                        {data: 'address', orderable: false},
+                        {data: 'created_at', searchable: false}
+                    ],
+
+                    "order": [
+                        [2, 'desc']
+                    ],
+                }
+            },
+
+            {
+                'selector': '#ripple-transaction-list',
+                'options': {
+                    "ajax": {
+                        "async": true,
+                        "url": '{{route('wallet.transaction-data', ['coin' => 'xrp'])}}',
                         "type": "POST",
                     },
 

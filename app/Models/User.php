@@ -298,10 +298,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->ethereum_addresses();
                 break;
 
-            // case 'ltc':
-            // case 'litecoin':
-            //     $model = $this->litecoin_addresses();
-            //     break;
+            case 'xrp':
+            case 'ripple':
+                $model = $this->ripple_addresses();
+                break;
         }
 
         return $model;
@@ -333,10 +333,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->ethereum_wallet();
                 break;
 
-            // case 'ltc':
-            // case 'litecoin':
-            //     $model = $this->litecoin_wallet();
-            //     break;
+            case 'xrp':
+            case 'ripple':
+                $model = $this->ripple_wallet();
+                break;
         }
 
         return $model;
@@ -370,10 +370,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
                 $model = $this->ethereum_transactions();
                 break;
 
-            // case 'ltc':
-            // case 'litecoin':
-            //     $model = $this->litecoin_transactions();
-            //     break;
+            case 'xrp':
+            case 'ripple':
+                $model = $this->ripple_transactions();
+                break;
         }
 
         return $model;
@@ -557,6 +557,41 @@ class User extends Authenticatable implements CanVerifyEmailContract
         return $this->hasManyThrough(
             'App\Models\EthereumTransaction',
             'App\Models\EthereumWallet',
+            'user_id', 'wallet_id',
+            'id', 'id'
+        );
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function ripple_addresses()
+    {
+        return $this->hasManyThrough(
+            'App\Models\RippleAddress',
+            'App\Models\RippleWallet',
+            'user_id', 'wallet_id',
+            'id', 'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function ripple_wallet()
+    {
+        return $this->hasOne('App\Models\RippleWallet', 'user_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function ripple_transactions()
+    {
+        return $this->hasManyThrough(
+            'App\Models\RippleTransaction',
+            'App\Models\RippleWallet',
             'user_id', 'wallet_id',
             'id', 'id'
         );

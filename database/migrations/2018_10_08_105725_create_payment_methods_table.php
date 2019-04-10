@@ -19,6 +19,7 @@ class CreatePaymentMethodsTable extends Migration
             $table->integer('payment_method_category_id')->unsigned();
             $table->foreign('payment_method_category_id')->references('id')
                 ->on('payment_method_categories')->onDelete('cascade');
+            $table->integer('time_frame')->default(30);
 
             $table->string('name');
 

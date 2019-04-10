@@ -25,7 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('phone')->nullable();
 
-            $table->string('timezone')->nullable();
+            $table->string('timezone')->nullable()->default(env('APP_TIMEZONE', 'UTC'));
+            $table->boolean('schedule_delete')->default(false);
+            $table->boolean('schedule_deactivate')->default(false);
             $table->string('currency')->default(config('settings.default_currency'));
 
             $status = ['active', 'inactive'];

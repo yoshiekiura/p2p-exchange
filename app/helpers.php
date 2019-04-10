@@ -25,7 +25,7 @@ use App\Models\PaymentMethodCategory;
 use App\Models\BitcoinWallet;
 use App\Models\KomodoWallet;
 use App\Models\EthereumWallet;
-//use App\Models\LitecoinWallet;
+use App\Models\RippleWallet;
 use App\Logics\Hosted\Adapters\BitcoinAdapter;
 use App\Logics\Hosted\Adapters\KomodoAdapter;
 use App\Logics\Hosted\Adapters\EthereumAdapter;
@@ -668,6 +668,11 @@ if (!function_exists('getEscrowWallet')) {
             case 'ethereum':
                 $model = EthereumWallet::whereNull('user_id');
                 break;
+
+            case 'xrp':
+            case 'ripple':
+                $model = RippleWallet::whereNull('user_id');
+                break;
         }
 
         return $model;
@@ -698,6 +703,11 @@ if (!function_exists('newCoinWallet')) {
             case 'ethereum':
                 $model = new EthereumWallet();
                 break;
+
+            case 'xrp':
+            case 'ripple':
+                $model = new RippleWallet();
+                break;            
         }
 
         return $model;

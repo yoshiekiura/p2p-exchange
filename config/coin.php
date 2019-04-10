@@ -47,19 +47,5 @@ return [
         'symbol_first'        => true,
     ],
 
-    // 'DASH' => [
-    //     'name'                => 'Dash',
-    //     'precision'           => 8,
-    //     'subunit'             => 100000000,
-    //     'symbol'              => 'Ɖ',
-    //     'symbol_first'        => true,
-    // ],
-
-    // 'LTC' => [
-    //     'name'                => 'Litecoin',
-    //     'precision'           => 8,
-    //     'subunit'             => 100000000,
-    //     'symbol'              => 'Ł',
-    //     'symbol_first'        => true,
-    // ],
+    // Ɖ  Ł
 ];

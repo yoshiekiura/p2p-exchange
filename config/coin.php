@@ -39,6 +39,13 @@ return [
         'symbol'              => 'Ξ',
         'symbol_first'        => true,
     ],
+    'XRP' => [
+        'name'                => 'Ripple',
+        'precision'           => 6,
+        'subunit'             => 1000000,
+        'symbol'              => 'X',
+        'symbol_first'        => true,
+    ],
 
     // 'DASH' => [
     //     'name'                => 'Dash',

@@ -151,7 +151,7 @@
 
                     <!--Ripple-->
                     <div class="col-xl-4 col-lg-6 col-12">
-                        <div class="card crypto-card-3 bg-dark">
+                        <div class="card crypto-card-3 bg-light">
                             <div class="card-content">
                                 <div class="card-body cc XRP pb-1">
                                     <div class="row">

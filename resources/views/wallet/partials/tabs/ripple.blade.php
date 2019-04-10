@@ -1,6 +1,6 @@
 <div class="card crypto-card-3">
     <div class="card-content">
-        <div class="card-body  bg-success cc XRP pb-1">
+        <div class="card-body  bg-info cc XRP pb-1">
             <div class="row">
                 <div class="col-6">
                     <h4 class="text-white mb-3">

@@ -43,6 +43,11 @@
                                     @include('admin.earnings.partials.tabs.ethereum')
                                 </div>
 
+                                <div role="tabpanel" class="tab-pane fade" id="ripple"
+                                     aria-labelledby="ripple-tab" aria-expanded="false">
+                                    @include('admin.earnings.partials.tabs.ripple')
+                                </div>
+
                                 <div class="tab-pane fade" id="settings" role="tabpanel"
                                      aria-labelledby="settings-tab" aria-expanded="false">
                                     @include('admin.earnings.partials.tabs.settings')
@@ -165,6 +170,13 @@
                                         </a>
                                     </li>
 
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="ripple-tab" data-toggle="pill"
+                                           href="#ripple" role="tab" aria-controls="ripple" aria-expanded="false">
+                                            <i class="cc XRP"></i> Ripple
+                                        </a>
+                                    </li>
+
 
                                     <li class="pt-1"><p class="lead">{{__('Miscellaneous')}}</p></li>
 
@@ -238,6 +250,27 @@
                     "ajax": {
                         "async": true,
                         "url": '{{route('admin.earnings.data', ['coin' => 'ethereum'])}}',
+                        "type": "POST",
+                    },
+
+                    searching: false,
+
+                    columns: [
+                        {data: null, defaultContent: ''},
+                        {data: 'address', searchable: false},
+                        {data: 'balance', searchable: false},
+                        {data: 'action', orderable: false, searchable: false},
+                    ]
+                }
+            },
+
+            // Ripple Wallets
+            {
+                'selector': '#ripple-wallets',
+                'options': {
+                    "ajax": {
+                        "async": true,
+                        "url": '{{route('admin.earnings.data', ['coin' => 'ripple'])}}',
                         "type": "POST",
                     },
 

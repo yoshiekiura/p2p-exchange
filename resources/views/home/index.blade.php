@@ -148,6 +148,48 @@
                         </div>
                     </div>
                     <!--Ethereum-->
+
+                    <!--Ripple-->
+                    <div class="col-xl-4 col-lg-6 col-12">
+                        <div class="card crypto-card-3 bg-dark">
+                            <div class="card-content">
+                                <div class="card-body cc XRP pb-1">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="text-white mb-3">
+                                                <i class="cc XRP" title="XRP"></i> Ethereum
+                                            </h4>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <h3 class="text-white mb-2 font-large-1">
+                                                {{Auth::user()->wallet('xrp')->totalAvailablePrice()}}
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-6 text-left">
+                                            <h6 class="text-white mb-1">
+                                                {{__('Available')}}
+                                            </h6>
+                                            <h4 class="text-white">
+                                                {{Auth::user()->wallet('xrp')->totalAvailable()}}
+                                            </h4>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <h6 class="text-white mb-1">
+                                                {{__('Balance')}}
+                                            </h6>
+                                            <h4 class="text-white">
+                                                {{Auth::user()->wallet('xrp')->totalBalance()}}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Ripple-->
                 </div>
 
                 <div class="row">

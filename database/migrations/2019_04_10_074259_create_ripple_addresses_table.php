@@ -16,6 +16,7 @@ class CreateRippleAddressesTable extends Migration
         Schema::create('ripple_addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('address');
+            $table->string('message');
             $table->string('label')->nullable();
             $table->integer('wallet_id')->unsigned()->nullable();
             $table->foreign('wallet_id')->references('id')

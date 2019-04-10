@@ -52,7 +52,7 @@ class CreateTradesTable extends Migration
             ])->default('active');
 
             $table->string('payment_method');
-
+            $table->timestamp('confirmed_at')->nullable();
             $table->timestamps();
         });
     }

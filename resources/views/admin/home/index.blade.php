@@ -136,7 +136,7 @@
                         </div>
 
                         <div class="col-xl-4">
-                            <div class="card crypto-card-3 bg-secondary">
+                            <div class="card crypto-card-3 bg-success">
                                 <div class="card-content">
                                     <div class="card-body cc KMD pb-1">
                                         <div class="row text-white">
@@ -174,6 +174,29 @@
                                                     {{$escrow_wallet->get('eth')['price']}}
                                                 </h2>
                                                 <h4 class="text-white">Ethereum</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4">
+                            <div class="card crypto-card-3 bg-info">
+                                <div class="card-content">
+                                    <div class="card-body cc XRP pb-1">
+                                        <div class="row text-white">
+                                            <div class="col-6">
+                                                <i class="cc XRP-alt font-large-1" title="XRP"></i>
+                                                <h4 class="pt-1 m-0 text-white">
+                                                    {{$escrow_wallet->get('xrp')['total']}} KMD
+                                                </h4>
+                                            </div>
+                                            <div class="col-6 text-right pl-0">
+                                                <h2 class="text-white mb-2 font-large-1">
+                                                    {{$escrow_wallet->get('xrp')['price']}}
+                                                </h2>
+                                                <h4 class="text-white">Ripple</h4>
                                             </div>
                                         </div>
                                     </div>
